@@ -48,7 +48,7 @@ int main(int argc, char const *argv[])
         {
             printf("%d ", array[i][j]);
         }
-        printf("\n");
+        printf("\n123");
     }   
     
 
