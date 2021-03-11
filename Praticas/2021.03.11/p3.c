@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define TAM 2
-#define TAM_String 20
+#define TAM_String 100
 
 void ex8(int array[][3], int tam)
 {
@@ -71,11 +71,35 @@ void mainEx11()
     inverteString(string);
 }
 
+void removeSpaces(char string[])
+{
+    for (int i = 0; i < strlen(string); i++)
+    {
+        if (string[i] == ' ' && string[i-1] != ' ' && i != 0)
+        {
+            printf("\n");
+        } else if(string[i] != ' ')
+        {
+            printf("%c", string[i]);
+        }
+    }
+}
+
+void mainEx12()
+{
+    char string[TAM_String] = "Hoje e           Domingo!     ";
+
+    removeSpaces(string);
+}
+
+
 int main(int argc, char const *argv[])
 {
     //mainEX8();
 
-    mainEx11();
+    //mainEx11();
+
+    mainEx12();
     
     return 0;
 }
