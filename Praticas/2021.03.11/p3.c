@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <math.h>
+#include <string.h>
 
 #define TAM 2
+#define TAM_String 20
 
 void ex8(int array[][3], int tam)
 {
@@ -31,9 +33,9 @@ void ex8(int array[][3], int tam)
     
 }
 
-int main(int argc, char const *argv[])
+int mainEX8()
 {
-    
+
     int array[TAM][3];
 
     printf("\n");
@@ -50,7 +52,30 @@ int main(int argc, char const *argv[])
         }
         printf("\n");
     }   
-    
+}
 
+void inverteString(char string[])
+{
+    for (int i = strlen(string); i >= 0; i--)
+    {
+        printf("%c", string[i]);
+    }
+    
+}
+
+void mainEx11()
+{
+
+    char string[TAM_String] = "Hoje e Domingo!";
+
+    inverteString(string);
+}
+
+int main(int argc, char const *argv[])
+{
+    //mainEX8();
+
+    mainEx11();
+    
     return 0;
 }
