@@ -100,6 +100,11 @@ int main(int argc, char const *argv[])
     //mainEx11();
 
     mainEx12();
-    
+
+    int n = 251;
+    n /=10;
+
+    printf("%d", n);
+
     return 0;
 }
