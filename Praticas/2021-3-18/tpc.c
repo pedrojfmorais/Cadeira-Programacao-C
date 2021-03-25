@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <ctype.h>
+#include <string.h>
 
 #define TAM1 10
 #define TAM2 10
@@ -44,7 +45,7 @@ void verifica(char *tel, char *c);
 void ex9()
 {
 
-    char tel[TEL] = {"239123456"};
+    char tel[TEL] = {"223922562"};
     char verify = ' ';
 
     verifica(tel, &verify);
@@ -68,12 +69,12 @@ void ex9()
     }
 }
 
-void verifica(char *tel, char *c)
-{
-
+void verifica(char tel[], char *c)
+{  
+    
     for (int i = 0; i < 9; i++)
     {
-        if (isdigit(tel[i]) == 0 || tel[0] != '2')
+        if (isdigit(tel[i]) == 0 || tel[0] != '2' || strlen(tel) < 9)
         {
             *c = 'I';
             return;
