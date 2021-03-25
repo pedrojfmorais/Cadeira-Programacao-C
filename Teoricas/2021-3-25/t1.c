@@ -131,7 +131,7 @@ int main(int argc, char const *argv[])
             printf("\n Opcao incorreta, tente novamente! \n\n");
             break;
         }
-    }  
+    }
 
     return 0;
 }

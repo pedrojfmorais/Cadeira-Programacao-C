@@ -1,0 +1,107 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define LIN 4
+#define COL 5
+
+void media_coluna_matriz(int n_lin, int n_col, float m[][n_col], int *imin, int *iMax)
+{
+    float media, Maxmedia, minmedia;
+    int i, j;
+    for(j=0;j<n_col; j++)
+    {
+        media = 0;
+        for(i=0; i<n_lin; i++)
+            media+=*(m[i]+j);
+
+        media=media/n_lin;
+
+        if (j==0 || Maxmedia<media) { //
+            Maxmedia = media;
+            *iMax = j;
+        }
+        if (!j || minmedia>media) {
+            minmedia = media;
+            *imin = j;
+        }
+        printf("Media da coluna %d = %.4f\n",j,media);
+    }
+
+
+}
+
+void medias(int n_lin,int n_col,float m[][n_col],int *iMax,int *imin) {
+    float media,Maxmedia,minmedia;
+    int i,j;
+
+    for(j=0;j<n_col;j++) {
+        media = 0;
+        for(i=0;i<n_lin;i++)
+            media += m[i][j]; // *(base+i*n_col+j)
+        media /= n_lin;  //determina a média de uma coluna
+
+        if (j==0 || Maxmedia<media) { //
+            Maxmedia = media;
+            *iMax = j;
+        }
+        if (!j || minmedia>media) {
+            minmedia = media;
+            *imin = j;
+        }
+        printf("Media da coluna %d = %.4f\n",j,media);
+    }
+
+}
+
+void medias1(int n_lin,int n_col,float m[][n_col],int *iMax,int *imin) {
+    float media,Maxmedia,minmedia,*base,*p;
+    int i,j;
+
+    base = (float *) m;
+    for(j=0;j<n_col;j++) {
+        media = 0;
+        p = m[0]+j;
+        for(i=0;i<n_lin;i++, p+= n_col)
+            media += *p;
+        media /= n_lin;
+
+        if (j==0 || Maxmedia<media) { //
+            Maxmedia = media;
+            *iMax = j;
+        }
+        if (!j || minmedia>media) {
+            minmedia = media;
+            *imin = j;
+        }
+        printf("Media da coluna %d = %.4f\n",j,media);
+    }
+
+}
+
+
+
+
+int main(int argc, char** argv) {
+    float m1[3][2] = {{1.0, 4.5},{-2.5, 8.9},{0.3, 1.4}};
+    float m2[2][6] = {{1.0,1.6, 4.2, 1.4,  0.5,-3.4},{2.5, 8.1, 0.9, -0.1, 0.8,3.5}};
+    int min1=0, max1=0, min2=0, max2=0;
+
+    printf("\nMatriz m1: \n");
+    printf("\nMETODO 1:\n");
+    media_coluna_matriz(3, 2,  m1, &min1, &max1);
+    printf("\nMETODO 2:\n");
+    medias(3, 2,  m1, &min1, &max1);
+    printf("\nMETODO 3:\n");
+    medias1(3, 2,  m1, &min1, &max1);
+
+    printf("\nMatriz m2: \n");
+    printf("\nMETODO 1:\n");
+    media_coluna_matriz(2, 6,  m2, &min2, &max2);
+    printf("\nMETODO 2:\n");
+    medias(2, 6,  m2, &min2, &max2);
+    printf("\nMETODO 3:\n");
+    medias1(2, 6,  m2, &min2, &max2);
+
+    printf("\nMatriz m1: (%d, %d)\n", min1, max1);
+    printf("\nMatriz m2: (%d, %d)\n", min2, max2);
+    return 0;
+}
