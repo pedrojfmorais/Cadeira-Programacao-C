@@ -28,19 +28,6 @@ void mostraMSG(){
    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 int main(){
 
     mostraMSG();
