@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char const *argv[])
+void printTraducao(char string[])
 {
     char traduz[24][20] = 
     {
@@ -19,21 +19,27 @@ int main(int argc, char const *argv[])
         "dezembro", "december"
     };
 
+    for (int i = 0; i < 24; i+=2)
+    {
+        if (!stricmp(string, traduz[i]))
+        {
+            printf("A traducao de %s e: %s. \n", string, traduz[i+1]);
+            return;
+        }
+    }
+    
+    printf("O mes introduzido esta incorreto.");
+}
+
+int main(int argc, char const *argv[])
+{
+    
     char entrada[20];
 
     printf("Introduza um mes em portugues: ");
     scanf("%s", entrada);
 
-    for (int i = 0; i < 24; i+=2)
-    {
-        if (!stricmp(entrada, traduz[i]))
-        {
-            printf("A traducao de %s e: %s. \n", entrada, traduz[i+1]);
-            return 0;
-        }
-    }
+    printTraducao(entrada);
     
-    printf("O mes introduzido esta incorreto.");
-
     return 0;
 }
