@@ -33,11 +33,13 @@ void mediaColunas(int linhas, int colunas, float array[][colunas], int *idxMedia
 
         if (media > mediaAlta)
         {
+            mediaAlta = media;
             *idxMediaAlta = j;
         }
 
         if (media < mediaBaixa)
         {
+            mediaBaixa = media;
             *idxMediaBaixa = j;
         }
     }
