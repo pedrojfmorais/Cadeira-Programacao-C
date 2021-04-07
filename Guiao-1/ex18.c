@@ -3,7 +3,7 @@
 #define LINHAS 4
 #define COLUNAS 5
 
-void mediaColunas(int linhas, int colunas, float array[][colunas], int *idxMediaAlta, int *idxMediaBaixa)
+void mediaColunas(int linhas, int colunas, float array[][colunas], int *idxMediaBaixa, int *idxMediaAlta)
 {
 
     float mediaBaixa;
