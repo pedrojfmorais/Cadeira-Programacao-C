@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1617900826 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex3\ponto.c
+	<stdio.h>
+	"ponto.h"
+
+1617898725 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex3\ponto.h
+
+1618507938 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex3\retangulo.c
+	<stdio.h>
+	"ponto.h"
+	"retangulo.h"
+
+1618507884 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex3\retangulo.h
+	"ponto.h"
+
+1618507261 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex3\main.c
+	<stdio.h>
+	<stdlib.h>
+	"retangulo.h"
+	"ponto.h"
+

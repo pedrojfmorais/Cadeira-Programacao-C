@@ -38,3 +38,51 @@ void move_retangulo(Retangulo *r, int dx, int dy)
 {
     movePonto(&r->p_cse,dx,dy);
 }
+
+int menu()
+{
+    int i;
+    puts("1 - Adiciona Retangulo");
+    puts("2 - Mostra Retangulos");
+    puts("3 - Elimina Retangulo Mais Pequeno");
+    puts("4 - Elimina Retangulos com area inferior a um limite");
+    puts("5 - Ordena retangulos pela ordem crescente da distancia Euclidiana");
+    puts("6 - Terminar");
+    puts("Escolha uma opcao: ");
+    do
+    {
+        scanf("%d", &i);
+    }
+    while(i<1 || i>6);
+    return i;
+}
+
+Retangulo obtem_info()
+{
+    Retangulo r;
+
+    inicializa_retangulo(&r);
+
+    return r;
+}
+
+void adicionar_retangulo(Retangulo array_r[], int *total)
+{
+    if(*total >= MAX)
+    {
+        printf("\nTabela Completa\n");
+        return;
+    }
+
+    array_r[*total] = obtem_info();
+    (*total)++;
+}
+
+void mostra_retangulo(Retangulo array_r[], int total)
+{
+    for(int i = 0; i < total; i++)
+    {
+        printf("\n\nRetangulo %d: \n", i+1);
+        imprime_retangulo(array_r[i]);
+    }
+}

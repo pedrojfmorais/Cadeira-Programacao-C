@@ -18,4 +18,7 @@ void inicializa_retangulo(Retangulo *r);
 int area_retangulo(Retangulo r);
 int ponto_retangulo(Retangulo r, ponto2D p);
 void move_retangulo(Retangulo *r, int dx, int dy);
+int menu();
+void adicionar_retangulo(Retangulo array_r[], int *total);
+void mostra_retangulo(Retangulo array_r[], int total);
 #endif // RETANGULO_H_INCLUDED

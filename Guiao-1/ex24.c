@@ -4,7 +4,7 @@
 int main(int argc, char const *argv[])
 {
     float media;
-
+    
     for (int i = 1; i < argc; i++)
     {
         media += atoi(argv[i]);

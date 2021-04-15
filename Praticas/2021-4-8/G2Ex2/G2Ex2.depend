@@ -5,16 +5,17 @@
 
 1617898725 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-8\g2ex2\ponto.h
 
-1617903001 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-8\g2ex2\retangulo.c
+1618505728 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-8\g2ex2\retangulo.c
 	<stdio.h>
+	"ponto.h"
 	"retangulo.h"
 
-1617902764 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-8\g2ex2\main.c
+1618505773 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-8\g2ex2\main.c
 	<stdio.h>
 	<stdlib.h>
 	"retangulo.h"
 	"ponto.h"
 
-1617902728 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-8\g2ex2\retangulo.h
+1618505693 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-8\g2ex2\retangulo.h
 	"ponto.h"
 
