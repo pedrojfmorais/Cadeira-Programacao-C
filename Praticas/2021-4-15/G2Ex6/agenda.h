@@ -1,0 +1,17 @@
+#ifndef AGENDA_H_INCLUDED
+#define AGENDA_H_INCLUDED
+
+typedef struct agenda contactos;
+
+struct agenda
+{
+    char nome[100];
+    char numero[10];
+};
+
+char menu();
+contactos *adiciona_contacto(contactos *array_contactos, int *total);
+void escreve_contactos(contactos *array_contactos, int total);
+void procura_contacto(contactos *array_contactos, int total,char *nome);
+
+#endif // AGENDA_H_INCLUDED

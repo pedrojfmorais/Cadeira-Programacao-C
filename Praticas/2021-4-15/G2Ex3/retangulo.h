@@ -21,4 +21,6 @@ void move_retangulo(Retangulo *r, int dx, int dy);
 int menu();
 void adicionar_retangulo(Retangulo array_r[], int *total);
 void mostra_retangulo(Retangulo array_r[], int total);
+void elimina_retangulo_menor(Retangulo array_r[], int *total);
+void elimina_retangulos_menores(Retangulo array_r[], int *total, int area);
 #endif // RETANGULO_H_INCLUDED

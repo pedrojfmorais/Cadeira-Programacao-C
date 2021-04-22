@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1619112987 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex6\agenda.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"agenda.h"
+
+1619112810 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex6\agenda.h
+
+1619113073 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\g2ex6\main.c
+	<stdio.h>
+	<stdlib.h>
+	"agenda.h"
+

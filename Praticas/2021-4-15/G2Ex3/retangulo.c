@@ -86,3 +86,49 @@ void mostra_retangulo(Retangulo array_r[], int total)
         imprime_retangulo(array_r[i]);
     }
 }
+
+void elimina_retangulo_menor(Retangulo array_r[], int *total)
+{
+    if(*total == 0)
+    {
+        printf("\nNao existem retangulos!\n\n");
+        return;
+    }
+
+    int area_menor = area_retangulo(array_r[0]);
+    int idx_eliminar = 0;
+    for(int i = 1; i < *total; i++)
+    {
+        int nova_area = area_retangulo(array_r[i]);
+
+        if(nova_area < area_menor)
+        {
+            area_menor = nova_area;
+            idx_eliminar = i;
+        }
+    }
+
+    array_r[idx_eliminar] = array_r[(*total)-1];
+    (*total)--;
+
+}
+
+void elimina_retangulos_menores(Retangulo array_r[], int *total, int area)
+{
+    int count = 0;
+
+    if(*total == 0)
+    {
+        printf("\nNao existem retangulos!\n\n");
+        return;
+    }
+
+    for(int i = 0; i < *total; i++)
+    {
+        if(area_retangulo(array_r[i]) < area)
+            count++;
+    }
+
+    for(int i = 0; i < count; i++)
+        elimina_retangulo_menor(array_r, total);
+}
