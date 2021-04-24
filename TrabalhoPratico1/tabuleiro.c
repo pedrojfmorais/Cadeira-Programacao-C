@@ -2,6 +2,8 @@
 #include <stdlib.h>
 
 #include "tabuleiro.h"
+#include "jogadores.h"
+
 #include "utils.h"
 
 tabuleiro inicializarTabuleiro()
@@ -32,14 +34,74 @@ tabuleiro inicializarTabuleiro()
 
 void mostraTabuleiro(tabuleiro tab)
 {
+    printf("  ");
+    for(int i = 0; i < tab.nColunas;i++)
+        printf(" %d", i+1);
+
     for(int i = 0; i < tab.nLinhas*tab.nColunas; i++)
     {
 
         if(i%tab.nColunas == 0)
-            printf("\n|");
+            printf("\n%d |", (i/tab.nColunas)+1);
 
 
         printf("%c|", tab.tabuleiro[i]);
     }
     printf("\n\n");
 }
+
+void pedeCoordenadas(tabuleiro tab, int *linha, int *coluna)
+{
+
+    do{
+        printf("Linha: ");
+        scanf("%d", linha);
+    }while((*linha) < 1 || (*linha) > tab.nLinhas);
+
+
+    do{
+        printf("Coluna: ");
+        scanf("%d", coluna);
+    }while((*coluna) < 1 || (*coluna) > tab.nColunas);
+
+}
+
+int verificaPeca(tabuleiro tab, jogadores *jogador, int linha, int coluna, char pecaColocar)
+{
+    linha = linha-1;
+    coluna = coluna-1;
+
+    char pecaRequerida = ' ';
+
+    switch(pecaColocar)
+    {
+        case 'P':
+            //a peca requerida a estar no local para a Pedra e igual a da peca Verde
+        case 'G':
+            pecaRequerida = ' ';
+            break;
+        case 'Y':
+            pecaRequerida = 'G';
+            break;
+        case 'R':
+            pecaRequerida = 'Y';
+            break;
+        default:
+            printf("Peca invalida, tente novamente!\n");
+            return 1;
+    }
+
+    if(tab.tabuleiro[linha*tab.nColunas+coluna] != pecaRequerida)
+    {
+        printf("\n\nJogada Invalida!\n");
+        return 1;
+    }
+
+    tab.tabuleiro[linha*tab.nColunas+coluna] = pecaColocar;
+
+    if(pecaColocar = 'P')
+        jogador->pedra--;
+
+    return 0;
+}
+

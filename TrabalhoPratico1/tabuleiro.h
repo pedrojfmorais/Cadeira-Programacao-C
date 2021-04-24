@@ -12,5 +12,7 @@ typedef struct Tabuleiro tabuleiro;
 
 tabuleiro inicializarTabuleiro();
 void mostraTabuleiro(tabuleiro tab);
+void pedeCoordenadas(tabuleiro tab, int *linha, int *coluna);
+int verificaPecaVerde(tabuleiro tab, int linha, int coluna);
 
 #endif // TABULEIRO_H_INCLUDED

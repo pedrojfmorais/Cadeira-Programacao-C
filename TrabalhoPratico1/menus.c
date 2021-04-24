@@ -25,9 +25,7 @@ void menuJogadas()
     printf(" '4' - Colocar Pedra\n");
     printf(" '5' - Adicionar Linha ao tabuleiro\n");
     printf(" '6' - Adicionar Coluna ao tabuleiro\n");
-    printf(" '9' - Ver jogadas anteriores\n");
-    printf(" '0' - Interromper Jogo\n");
-    printf(" 'q' - Desistir\n\n");
-
-
+    printf(" '7' - Ver jogadas anteriores\n");
+    printf(" '9' - Interromper Jogo\n");
+    printf(" '0' - Desistir\n\n");
 }
