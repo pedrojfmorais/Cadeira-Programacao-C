@@ -14,5 +14,6 @@ tabuleiro inicializarTabuleiro();
 void mostraTabuleiro(tabuleiro tab);
 void pedeCoordenadas(tabuleiro tab, int *linha, int *coluna);
 int verificaPecaVerde(tabuleiro tab, int linha, int coluna);
+tabuleiro copiarTabuleiro(tabuleiro tabRecebido);
 
 #endif // TABULEIRO_H_INCLUDED

@@ -105,3 +105,27 @@ int verificaPeca(tabuleiro tab, jogadores *jogador, int linha, int coluna, char 
     return 0;
 }
 
+tabuleiro copiarTabuleiro(tabuleiro tabRecebido)
+{
+
+    tabuleiro tab;
+
+    tab.tabuleiro = malloc(sizeof(char)*tabRecebido.nLinhas*tabRecebido.nColunas);
+
+    if(tab.tabuleiro == NULL)
+    {
+        printf("Ocorreu um erro a alocar memória!");
+        return;
+    }
+
+    for(int i = 0; i < tabRecebido.nLinhas*tabRecebido.nColunas; i++)
+    {
+
+        tab.tabuleiro[i] = tabRecebido.tabuleiro[i];
+    }
+
+    tab.nLinhas = tabRecebido.nLinhas;
+    tab.nColunas = tabRecebido.nColunas;
+
+    return tab;
+}

@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "menus.h"
 #include "jogadores.h"
 #include "tabuleiro.h"
+#include "registoJogadas.h"
 
 void umJogador()
 {
@@ -25,6 +27,10 @@ void doisJogadores()
 
     int linha, coluna;
 
+    jogada *arrayJogadas = NULL;
+    char infoJogada[100];
+    int nJogadasAnteriores = 0;
+
     while(numJogadas < 10)
     {
         printf("\n\n--------------------------------------------------\n");
@@ -44,16 +50,31 @@ void doisJogadores()
             case 1:
                 pedeCoordenadas(tab,&linha,&coluna);
                 checkJogada = verificaPeca(tab,arrayJogadores[numJogadas%2],linha,coluna,'G');
+
+                //registo de jogadas
+                sprintf(infoJogada, "Peca Verde na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
+                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+
                 break;
 
             case 2:
                 pedeCoordenadas(tab,&linha,&coluna);
                 checkJogada = verificaPeca(tab,arrayJogadores[numJogadas%2],linha,coluna,'Y');
+
+                //registo de jogadas
+                sprintf(infoJogada, "Peca Amarela na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
+                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+
                 break;
 
             case 3:
                 pedeCoordenadas(tab,&linha,&coluna);
                 checkJogada = verificaPeca(tab,arrayJogadores[numJogadas%2],linha,coluna,'R');
+
+                //registo de jogadas
+                sprintf(infoJogada, "Peca Vermelha na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
+                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+
                 break;
 
             case 4:
@@ -65,6 +86,11 @@ void doisJogadores()
                 }
                 pedeCoordenadas(tab,&linha,&coluna);
                 checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'P');
+
+                //registo de jogadas
+                sprintf(infoJogada, "Pedra na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
+                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+
                 break;
 
             case 5:
@@ -74,6 +100,22 @@ void doisJogadores()
                 break;
 
             case 7:
+
+                printf("\nOcorreram ate agora %d jogadas.\n", numJogadas);
+                do{
+
+                    printf("Ver ultimas 'x' jogadas: ");
+                    scanf("%d", &nJogadasAnteriores);
+                }while(nJogadasAnteriores < 0 || nJogadasAnteriores > numJogadas);
+
+                printf("\n");
+
+                for(int i = numJogadas-1; i >= (numJogadas-nJogadasAnteriores); i--)
+                {
+
+                    mostrarJogada(arrayJogadas, i);
+                }
+                checkJogada = 1;
                 break;
 
             case 9:
@@ -91,6 +133,14 @@ void doisJogadores()
             numJogadas++;
 
     }
+}
+
+void terminarJogo()
+{
+    //free tabuleiro
+    //free registoJogadas
+    //terminar
+
 }
 
 int main()
