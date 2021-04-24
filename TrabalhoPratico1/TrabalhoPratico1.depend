@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1619257576 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\trabalhopratico1\jogadores.c
+
+1619258252 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\trabalhopratico1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menus.h"
+
+1619257605 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\trabalhopratico1\registojogadas.c
+
+1619257591 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\trabalhopratico1\tabuleiro.c
+
+1619258226 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\trabalhopratico1\menus.c
+	<stdio.h>
+
+1619257893 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\trabalhopratico1\menus.h
+
+1619261530 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.c
+	<stdio.h>
+	<stdlib.h>
+	"jogadores.h"
+
+1619262240 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.c
+	<stdio.h>
+
+1619257605 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.c
+
+1619262885 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"menus.h"
+	"jogadores.h"
+	"tabuleiro.h"
+
+1619257893 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.h
+
+1619261253 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tabuleiro.h
+
+1619260467 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\utils.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	"utils.h"
+
+1619260236 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\utils.h
+
+1619261241 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tabuleiro.c
+	<stdio.h>
+	<stdlib.h>
+	"tabuleiro.h"
+	"utils.h"
+
+1619261572 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.h
+
