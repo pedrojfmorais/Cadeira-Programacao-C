@@ -31,6 +31,8 @@ void doisJogadores()
     char infoJogada[100];
     int nJogadasAnteriores = 0;
 
+    int vitoria = 0;
+
     while(numJogadas < 10)
     {
         printf("\n\n--------------------------------------------------\n");
@@ -54,6 +56,20 @@ void doisJogadores()
                 //registo de jogadas
                 sprintf(infoJogada, "Peca Verde na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
                 arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+
+                vitoria = verificaVitoria(tab);
+
+                if(vitoria == 1)
+                {
+                    declararVitoria(arrayJogadores[(numJogadas)%2].identificacao);
+
+                    //registo de jogadas
+                    sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", arrayJogadores[numJogadas%2].identificacao);
+                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
+
+                    //terminar jogo
+                    terminarJogo(arrayJogadas, tab);
+                }
 
                 break;
 
@@ -122,6 +138,23 @@ void doisJogadores()
                 break;
 
             case 0:
+                printf("\nPretende mesmo desistir(y/n): ");
+                scanf(" %c", &opcao);
+
+                if(opcao == 'y' || opcao == 'Y')
+                {
+                    declararVitoria(arrayJogadores[(numJogadas+1)%2].identificacao);
+
+                    //registo de jogadas
+                    sprintf(infoJogada, "O jogador %c desistiu.\n", arrayJogadores[numJogadas%2].identificacao);
+                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, 0, infoJogada);
+
+                    //terminar jogo
+                    terminarJogo(arrayJogadas, tab);
+                } else{
+                    checkJogada = 1;
+                }
+
                 break;
 
             default:
@@ -135,11 +168,14 @@ void doisJogadores()
     }
 }
 
-void terminarJogo()
+void terminarJogo(jogada *arrayJogadas, tabuleiro tab)
 {
+    //guardar registo jogo em ficheiro
     //free tabuleiro
     //free registoJogadas
     //terminar
+
+    exit(0);
 
 }
 

@@ -16,4 +16,6 @@ void pedeCoordenadas(tabuleiro tab, int *linha, int *coluna);
 int verificaPecaVerde(tabuleiro tab, int linha, int coluna);
 tabuleiro copiarTabuleiro(tabuleiro tabRecebido);
 
+int verificaVitoria(tabuleiro tab);
+void declararVitoria(char idJogador);
 #endif // TABULEIRO_H_INCLUDED

@@ -129,3 +129,62 @@ tabuleiro copiarTabuleiro(tabuleiro tabRecebido)
 
     return tab;
 }
+
+int verificaVitoria(tabuleiro tab)
+{
+    int verifica;
+
+    //verificação das linhas
+    for(int i = 0; i < tab.nLinhas; i++)
+    {
+        verifica = 0;
+
+        if(tab.tabuleiro[i*tab.nColunas] == ' ')
+            continue;
+
+        for(int j = i*tab.nColunas; j < i*tab.nColunas+tab.nColunas; j++)
+        {
+            if(tab.tabuleiro[i*tab.nColunas] == tab.tabuleiro[j] && tab.tabuleiro[i*tab.nColunas] != ' ')
+            {
+                verifica++;
+            }else
+            {
+                break;
+            }
+        }
+        if(verifica == tab.nColunas)
+            return 1;
+    }
+
+    //verificação das colunas
+    for(int i = 0; i < tab.nColunas; i++)
+    {
+        verifica = 0;
+
+        if(tab.tabuleiro[i] == ' ')
+            continue;
+
+        for(int j = i; j <= i+((tab.nLinhas-1)*tab.nColunas); j+=tab.nColunas)
+        {
+
+            if(tab.tabuleiro[i] == tab.tabuleiro[j] && tab.tabuleiro[i] != ' ')
+            {
+                verifica++;
+            }else
+            {
+                break;
+            }
+        }
+        if(verifica == tab.nLinhas)
+            return 1;
+    }
+
+    //verificação diagonais
+    return 0;
+}
+
+void declararVitoria(char idJogador)
+{
+
+    printf("\n\n\n\n\nO jogador %c ganhou o jogo.\n\n\n\n\n", idJogador);
+}
