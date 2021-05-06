@@ -20,7 +20,7 @@ int main()
         case '2':
             printf("\nNome do contacto a eliminar: ");
             scanf("%s", input);
-            //array_contactos=elimina_contacto(array_contactos,&total,input);
+            array_contactos=elimina_contacto(array_contactos, &total,input);
             break;
         case '3':
             escreve_contactos(array_contactos,total);
@@ -33,10 +33,10 @@ int main()
         case '5':
             printf("\nNome do contacto que pretende atualizar: ");
             scanf("%s", input);
-            //array_contactos=atualiza_contacto(array_contactos, total, input);
+            array_contactos=atualiza_contacto(array_contactos, total, input);
             break;
         case '6':
-            //array_contactos=ordena_contactos(array_contactos,total);
+            array_contactos=ordena_contactos(array_contactos,total);
             break;
         case '7':
             break;

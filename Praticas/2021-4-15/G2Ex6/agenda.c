@@ -120,3 +120,84 @@ void procura_contacto(contactos *array_contactos, int total,char *nome)
     }
     printf("O contacto \"%s\" nao existe!\n", nome);
 }
+
+contactos *atualiza_contacto(contactos *array_contactos, int total, char nome[100])
+{
+
+    int i = 0;
+    for(i; i<total && strcmp(nome, array_contactos[i].nome)!=0;i++);
+
+    if(i==total)
+    {
+        printf("Contactos nao existe\n");
+    } else
+    {
+        printf("Introduza o novo contacto de %s: ", array_contactos[i].nome);
+        scanf(" %9[^\n]", &array_contactos[i].numero);
+    }
+    return array_contactos;
+}
+
+contactos *elimina_contacto(contactos *array_contactos, int *total, char nome[100])
+{
+    int i = 0;
+    contactos *aux;
+    contactos temp;
+
+    for(i; i<*total && strcmp(nome, array_contactos[i].nome)!=0;i++);
+
+    if(i==*total)
+    {
+        printf("Contactos nao existe\n");
+        return array_contactos;
+
+    }else if(*total==1)
+    {
+        free(array_contactos);
+        *total = 0;
+        return NULL;
+
+    }else
+    {
+        temp = array_contactos[i];
+
+        array_contactos[i] = array_contactos[*total-1];
+        aux = realloc(array_contactos, sizeof(contactos)*(*total)-1);
+
+        if(aux == NULL)
+        {
+            printf("Ocorreu um erro a alocar memória!");
+            array_contactos[i] = temp;
+            return array_contactos;
+        }
+
+        array_contactos = aux;
+        (*total)--;
+
+    }
+    return array_contactos;
+}
+
+contactos *ordena_contactos(contactos *array_contactos, int total)
+{
+    int i, ordena;
+    contactos aux;
+
+    do{
+
+        ordena = 0;
+        for(i = 0; i < total-1;i++)
+        {
+            if(strcmp(array_contactos[i].nome,array_contactos[i+1].nome)>0)
+            {
+                aux = array_contactos[i];
+                array_contactos[i] = array_contactos[i+1];
+                array_contactos[i+1] = aux;
+                ordena = 1;
+            }
+        }
+
+    }while(ordena);
+
+    return array_contactos;
+}

@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1620228648 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-5-5\g3ex1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"viagens_cp.h"
+
+1620227857 d:\programacao\c\cadeira-programacao---c\praticas\2021-5-5\g3ex1\viagens_cp.h
+
+1620228746 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-5-5\g3ex1\viagens_cp.c
+	<stdio.h>
+	<stdlib.h>
+	"viagens_cp.h"
+
