@@ -1,0 +1,3 @@
+D:/Programacao/C/Cadeira-Programacao---C/testeClion/cmake-build-debug/CMakeFiles/testeClion.dir
+D:/Programacao/C/Cadeira-Programacao---C/testeClion/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Programacao/C/Cadeira-Programacao---C/testeClion/cmake-build-debug/CMakeFiles/rebuild_cache.dir
