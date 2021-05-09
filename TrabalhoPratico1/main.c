@@ -33,7 +33,7 @@ void doisJogadores()
 
     int vitoria = 0;
 
-    while(numJogadas < 10)
+    while(1)
     {
         printf("\n\n--------------------------------------------------\n");
         printf("Jogador %c.\n\n", arrayJogadores[numJogadas%2].identificacao);
@@ -51,7 +51,7 @@ void doisJogadores()
         {
             case 1:
                 pedeCoordenadas(tab,&linha,&coluna);
-                checkJogada = verificaPeca(tab,arrayJogadores[numJogadas%2],linha,coluna,'G');
+                checkJogada = verificaPeca(tab, &arrayJogadores[numJogadas%2],linha,coluna,'G');
 
                 //registo de jogadas
                 sprintf(infoJogada, "Peca Verde na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
@@ -75,21 +75,49 @@ void doisJogadores()
 
             case 2:
                 pedeCoordenadas(tab,&linha,&coluna);
-                checkJogada = verificaPeca(tab,arrayJogadores[numJogadas%2],linha,coluna,'Y');
+                checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'Y');
 
                 //registo de jogadas
                 sprintf(infoJogada, "Peca Amarela na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
                 arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
 
+                vitoria = verificaVitoria(tab);
+
+                if(vitoria == 1)
+                {
+                    declararVitoria(arrayJogadores[(numJogadas)%2].identificacao);
+
+                    //registo de jogadas
+                    sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", arrayJogadores[numJogadas%2].identificacao);
+                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
+
+                    //terminar jogo
+                    terminarJogo(arrayJogadas, tab);
+                }
+
                 break;
 
             case 3:
                 pedeCoordenadas(tab,&linha,&coluna);
-                checkJogada = verificaPeca(tab,arrayJogadores[numJogadas%2],linha,coluna,'R');
+                checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'R');
 
                 //registo de jogadas
                 sprintf(infoJogada, "Peca Vermelha na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
                 arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+
+                vitoria = verificaVitoria(tab);
+
+                if(vitoria == 1)
+                {
+                    declararVitoria(arrayJogadores[(numJogadas)%2].identificacao);
+
+                    //registo de jogadas
+                    sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", arrayJogadores[numJogadas%2].identificacao);
+                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
+
+                    //terminar jogo
+                    terminarJogo(arrayJogadas, tab);
+                }
 
                 break;
 
@@ -110,9 +138,35 @@ void doisJogadores()
                 break;
 
             case 5:
+                if(arrayJogadores[numJogadas%2].aumentarTabuleiro == 0)
+                {
+                    printf("\nEste jogador esgotou os seus aumentos do tabuleiro.\n");
+                    checkJogada = 1;
+                    break;
+                }
+
+                tab = aumentaLinhas(tab, &arrayJogadores[numJogadas%2], &checkJogada);
+
+                //registo de jogadas
+                sprintf(infoJogada, "Aumento de uma linha ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
+                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, tab.nLinhas, 0, infoJogada);
+
                 break;
 
             case 6:
+                if(arrayJogadores[numJogadas%2].aumentarTabuleiro == 0)
+                {
+                    printf("\nEste jogador esgotou os seus aumentos do tabuleiro.\n");
+                    checkJogada = 1;
+                    break;
+                }
+
+                tab = aumentaColunas(tab, &arrayJogadores[numJogadas%2], &checkJogada);
+
+                //registo de jogadas
+                sprintf(infoJogada, "Aumento de uma coluna ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
+                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, tab.nColunas, infoJogada);
+
                 break;
 
             case 7:
@@ -162,6 +216,7 @@ void doisJogadores()
                 break;
 
         }
+
         if(checkJogada == 0)
             numJogadas++;
 

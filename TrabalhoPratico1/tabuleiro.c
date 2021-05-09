@@ -12,7 +12,8 @@ tabuleiro inicializarTabuleiro()
     tabuleiro tab;
     int tam = intUniformRnd(3,5);
 
-    tab.tabuleiro = malloc(sizeof(char)*tam*tam);
+    //cria array dinamico com 'tam' numero de linhas
+    tab.tabuleiro = (char**)malloc(sizeof(char*)*tam);
 
     if(tab.tabuleiro == NULL)
     {
@@ -20,14 +21,27 @@ tabuleiro inicializarTabuleiro()
         return;
     }
 
+    //para cada linha cria 'tam' numero de colunas
+    for (int i=0; i<tam; i++)
+    {
+        tab.tabuleiro[i] = (char*)malloc(sizeof(char)* tam );
+        if(tab.tabuleiro[i] == NULL)
+        {
+            printf("Erro na alocacao de memoria");
+            free(tab.tabuleiro);
+            return;
+        }
+
+        //inicializar o tabuleiro
+        for (int j = 0; j < tam; j++)
+        {
+            tab.tabuleiro[i][j] = ' ';
+        }
+
+    }
+
     tab.nLinhas = tam;
     tab.nColunas = tam;
-
-    for(int i = 0; i < tam*tam; i++)
-    {
-
-        tab.tabuleiro[i] = ' ';
-    }
 
     return tab;
 }
@@ -38,14 +52,14 @@ void mostraTabuleiro(tabuleiro tab)
     for(int i = 0; i < tab.nColunas;i++)
         printf(" %d", i+1);
 
-    for(int i = 0; i < tab.nLinhas*tab.nColunas; i++)
+    for(int i = 0; i < tab.nLinhas; i++)
     {
+        printf("\n%d |", i+1);
 
-        if(i%tab.nColunas == 0)
-            printf("\n%d |", (i/tab.nColunas)+1);
-
-
-        printf("%c|", tab.tabuleiro[i]);
+        for(int j = 0; j < tab.nColunas; j++)
+        {
+            printf("%c|", tab.tabuleiro[i][j]);
+        }
     }
     printf("\n\n");
 }
@@ -91,13 +105,13 @@ int verificaPeca(tabuleiro tab, jogadores *jogador, int linha, int coluna, char 
             return 1;
     }
 
-    if(tab.tabuleiro[linha*tab.nColunas+coluna] != pecaRequerida)
+    if(tab.tabuleiro[linha][coluna] != pecaRequerida)
     {
         printf("\n\nJogada Invalida!\n");
         return 1;
     }
 
-    tab.tabuleiro[linha*tab.nColunas+coluna] = pecaColocar;
+    tab.tabuleiro[linha][coluna] = pecaColocar;
 
     if(pecaColocar = 'P')
         jogador->pedra--;
@@ -105,12 +119,100 @@ int verificaPeca(tabuleiro tab, jogadores *jogador, int linha, int coluna, char 
     return 0;
 }
 
+tabuleiro aumentaLinhas(tabuleiro tab, jogadores *jogador, int *checkJogada)
+{
+    tabuleiro aux;
+
+    aux.nLinhas = tab.nLinhas+1;
+    aux.nColunas = tab.nColunas;
+
+    if(jogador->aumentarTabuleiro == 0)
+    {
+        printf("\nEste jogador esgotou os seus aumentos do tabuleiro.\n");
+        *checkJogada = 1;
+        return tab;
+    }
+
+    aux.tabuleiro = (char**)realloc(tab.tabuleiro, sizeof(char*)*aux.nLinhas);
+
+    if(aux.tabuleiro == NULL)
+    {
+        printf("Ocorreu um erro a alocar memória!");
+        *checkJogada = 1;
+        return tab;
+    }
+
+    aux.tabuleiro[aux.nLinhas-1] = (char*)malloc(sizeof(char)* aux.nColunas);
+
+    if(aux.tabuleiro[aux.nLinhas-1] == NULL)
+    {
+        printf("Erro na alocacao de memoria");
+        *checkJogada = 1;
+        return tab;
+    }
+
+    for (int j = 0; j < aux.nColunas; j++)
+    {
+        aux.tabuleiro[aux.nLinhas-1][j] = ' ';
+    }
+
+    jogador->aumentarTabuleiro--;
+
+    mostraTabuleiro(aux);
+
+    *checkJogada = 0;
+    return aux;
+}
+
+tabuleiro aumentaColunas(tabuleiro tab, jogadores *jogador, int *checkJogada)
+{
+    tabuleiro aux;
+
+    aux.nLinhas = tab.nLinhas;
+    aux.nColunas = tab.nColunas+1;
+
+    if(jogador->aumentarTabuleiro == 0)
+    {
+        printf("\nEste jogador esgotou os seus aumentos do tabuleiro.\n");
+        *checkJogada = 1;
+        return tab;
+    }
+
+    aux.tabuleiro = (char**)realloc(tab.tabuleiro, sizeof(char*)*aux.nLinhas);
+
+    if(aux.tabuleiro == NULL)
+    {
+        printf("Ocorreu um erro a alocar memória!");
+        *checkJogada = 1;
+        return tab;
+    }
+
+    for(int i = 0; i < aux.nLinhas; i++)
+    {
+        aux.tabuleiro[i] = (char*)realloc(aux.tabuleiro[i], sizeof(char)* aux.nColunas);
+
+        if(aux.tabuleiro[i] == NULL)
+        {
+            printf("Erro na alocacao de memoria");
+            *checkJogada = 1;
+            return tab;
+        }
+
+        aux.tabuleiro[i][aux.nColunas-1] = ' ';
+    }
+
+    jogador->aumentarTabuleiro--;
+
+    *checkJogada = 0;
+    return aux;
+}
+
 tabuleiro copiarTabuleiro(tabuleiro tabRecebido)
 {
 
     tabuleiro tab;
 
-    tab.tabuleiro = malloc(sizeof(char)*tabRecebido.nLinhas*tabRecebido.nColunas);
+    tab.tabuleiro = (char**)malloc(sizeof(char*)*tabRecebido.nLinhas);
 
     if(tab.tabuleiro == NULL)
     {
@@ -118,10 +220,21 @@ tabuleiro copiarTabuleiro(tabuleiro tabRecebido)
         return;
     }
 
-    for(int i = 0; i < tabRecebido.nLinhas*tabRecebido.nColunas; i++)
+    for (int i=0; i<tabRecebido.nLinhas; i++)
     {
+        tab.tabuleiro[i] = (char*)malloc(sizeof(char)*tabRecebido.nColunas);
+        if(tab.tabuleiro[i] == NULL)
+        {
+            printf("Erro na alocacao de memoria");
+            free(tab.tabuleiro);
+            return;
+        }
 
-        tab.tabuleiro[i] = tabRecebido.tabuleiro[i];
+        for (int j = 0; j < tabRecebido.nColunas; j++)
+        {
+            tab.tabuleiro[i][j] = tabRecebido.tabuleiro[i][j];
+        }
+
     }
 
     tab.nLinhas = tabRecebido.nLinhas;
@@ -139,12 +252,12 @@ int verificaVitoria(tabuleiro tab)
     {
         verifica = 0;
 
-        if(tab.tabuleiro[i*tab.nColunas] == ' ')
+        if(tab.tabuleiro[i][0] == ' ')
             continue;
 
-        for(int j = i*tab.nColunas; j < i*tab.nColunas+tab.nColunas; j++)
+        for(int j = 0; j < tab.nColunas; j++)
         {
-            if(tab.tabuleiro[i*tab.nColunas] == tab.tabuleiro[j] && tab.tabuleiro[i*tab.nColunas] != ' ')
+            if(tab.tabuleiro[i][j] == tab.tabuleiro[i][0] && tab.tabuleiro[i][j] != ' ')
             {
                 verifica++;
             }else
@@ -161,13 +274,13 @@ int verificaVitoria(tabuleiro tab)
     {
         verifica = 0;
 
-        if(tab.tabuleiro[i] == ' ')
+        if(tab.tabuleiro[0][i] == ' ')
             continue;
 
-        for(int j = i; j <= i+((tab.nLinhas-1)*tab.nColunas); j+=tab.nColunas)
+        for(int j = 0; j < tab.nLinhas; j++)
         {
 
-            if(tab.tabuleiro[i] == tab.tabuleiro[j] && tab.tabuleiro[i] != ' ')
+            if(tab.tabuleiro[j][i] == tab.tabuleiro[0][i] && tab.tabuleiro[j][i] != ' ')
             {
                 verifica++;
             }else
@@ -180,6 +293,46 @@ int verificaVitoria(tabuleiro tab)
     }
 
     //verificação diagonais
+    if(tab.nLinhas == tab.nColunas)
+    {
+
+        verifica = 0;
+
+        for(int i = 0; i < tab.nLinhas; i++)
+        {
+
+            if(tab.tabuleiro[i][i] == tab.tabuleiro[0][0] && tab.tabuleiro[i][i] != ' ')
+            {
+                verifica++;
+            }else
+            {
+                break;
+            }
+        }
+
+        if(verifica == tab.nLinhas)
+            return 1;
+
+        verifica = 0;
+
+        for(int i = 0, j = tab.nLinhas-1; i < tab.nLinhas; i++, j--)
+        {
+
+            if(tab.tabuleiro[i][j] == tab.tabuleiro[tab.nLinhas-1][0] && tab.tabuleiro[i][j] != ' ')
+            {
+                verifica++;
+            }else
+            {
+                break;
+            }
+
+        }
+        printf("%d", verifica);
+        if(verifica == tab.nLinhas)
+            return 1;
+
+    }
+
     return 0;
 }
 
