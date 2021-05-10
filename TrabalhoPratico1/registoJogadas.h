@@ -3,6 +3,8 @@
 
 #include "tabuleiro.h"
 
+typedef struct Jogada jogada;
+
 struct Jogada{
 
     tabuleiro tab;
@@ -11,10 +13,9 @@ struct Jogada{
     int linhaAfetada;
     int colunaAfetada;
     char infoJogada[100];
+    jogada *next;
 
 };
-
-typedef struct Jogada jogada;
 
 jogada *adicionarJogada(jogada *arrayJogadas, tabuleiro tab, char idJogador, int nJogada, int linha, int coluna, char infoJogada[]);
 void mostrarJogada(jogada *arrayJogadas, int index);
