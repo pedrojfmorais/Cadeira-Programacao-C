@@ -12,22 +12,15 @@ void umJogador()
 
 }
 
-void doisJogadores()
+void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro tab, ponteiroJogadas listaJogadas)
 {
-    int numJogadas = 0;
     int checkJogada = 0;
     char opcao;
 
-    jogadores jogadorA = inicializarJogador('A');
-    jogadores jogadorB = inicializarJogador('B');
-
     jogadores arrayJogadores[2] = {jogadorA,jogadorB};
-
-    tabuleiro tab = inicializarTabuleiro();
 
     int linha, coluna;
 
-    ponteiroJogadas listaJogadas = NULL;
     char infoJogada[100];
     int nJogadasAnteriores = 0;
 
@@ -71,7 +64,7 @@ void doisJogadores()
                     listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(listaJogadas, tab);
+                    terminarJogo(listaJogadas, &tab);
                 }
 
                 break;
@@ -98,7 +91,7 @@ void doisJogadores()
                     listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(listaJogadas, tab);
+                    terminarJogo(listaJogadas, &tab);
                 }
 
                 break;
@@ -125,7 +118,7 @@ void doisJogadores()
                     listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(listaJogadas, tab);
+                    terminarJogo(listaJogadas, &tab);
                 }
 
                 break;
@@ -221,7 +214,7 @@ void doisJogadores()
                     listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(listaJogadas, tab);
+                    terminarJogo(listaJogadas, &tab);
                 } else{
                     checkJogada = 1;
                 }
@@ -240,9 +233,10 @@ void doisJogadores()
     }
 }
 
-void terminarJogo(ponteiroJogadas listaJogadas, tabuleiro tab)
+void terminarJogo(ponteiroJogadas listaJogadas, tabuleiro *tab)
 {
 
+    ponteiroJogadas aux;
     int resultadoFicheiroJogadas;
     char nomeFicheiro[99];
 
@@ -261,12 +255,30 @@ void terminarJogo(ponteiroJogadas listaJogadas, tabuleiro tab)
         printf("\nO ficheiro com as jogadas foi criado.\n\n");
     }
 
-    //free tabuleiro
-    //free registoJogadas
-    //terminar
+    // liberta cada linha da tabela
+    for(int i = 0; i < tab->nLinhas; i++)
+        free(tab->tabuleiro[i]);
+
+    // liberta a tabela em si
+    free(tab->tabuleiro);
+
+    while(listaJogadas != NULL)
+    {
+
+        aux = listaJogadas;
+        listaJogadas = listaJogadas->next;
+
+        // liberta a tabela
+        for(int i = 0; i < aux->tab.nLinhas; i++)
+            free(aux->tab.tabuleiro[i]);
+
+        free(aux->tab.tabuleiro);
+
+        // leberta o nó
+        free(aux);
+    }
 
     exit(0);
-
 }
 
 int main()
@@ -293,7 +305,7 @@ int main()
             // 1 jogador
             break;
         case 2:
-            doisJogadores();
+            doisJogadores(0, inicializarJogador('A'), inicializarJogador('B'), inicializarTabuleiro(), NULL);
             break;
         case 9:
             printf("Obrigado por jogar.\n");
