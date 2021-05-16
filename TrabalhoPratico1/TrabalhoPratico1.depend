@@ -23,7 +23,7 @@
 1619279006 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.c
 	<stdio.h>
 
-1619306765 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.c
+1621163032 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -31,7 +31,7 @@
 	"jogadores.h"
 	"tabuleiro.h"
 
-1620572707 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\main.c
+1621162994 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -62,6 +62,6 @@
 
 1619261572 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.h
 
-1620592789 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.h
+1621161271 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.h
 	"tabuleiro.h"
 

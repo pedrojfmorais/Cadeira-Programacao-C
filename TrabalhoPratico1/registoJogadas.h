@@ -3,7 +3,7 @@
 
 #include "tabuleiro.h"
 
-typedef struct Jogada jogada;
+typedef struct Jogada jogada, *ponteiroJogadas;
 
 struct Jogada{
 
@@ -17,7 +17,8 @@ struct Jogada{
 
 };
 
-jogada *adicionarJogada(jogada *arrayJogadas, tabuleiro tab, char idJogador, int nJogada, int linha, int coluna, char infoJogada[]);
-void mostrarJogada(jogada *arrayJogadas, int index);
+ponteiroJogadas adicionarJogada(ponteiroJogadas listaJogadas, tabuleiro tab, char idJogador, int nJogada, int linha, int coluna, char infoJogada[]);
+void mostrarJogada(ponteiroJogadas listaJogadas);
+int escreveJogadasFicheiro(char *nomeFicheiro, ponteiroJogadas listaJogadas);
 
 #endif // REGISTOJOGADAS_H_INCLUDED

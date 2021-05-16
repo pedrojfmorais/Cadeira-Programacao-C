@@ -27,7 +27,7 @@ void doisJogadores()
 
     int linha, coluna;
 
-    jogada *arrayJogadas = NULL;
+    ponteiroJogadas listaJogadas = NULL;
     char infoJogada[100];
     int nJogadasAnteriores = 0;
 
@@ -53,9 +53,12 @@ void doisJogadores()
                 pedeCoordenadas(tab,&linha,&coluna);
                 checkJogada = verificaPeca(tab, &arrayJogadores[numJogadas%2],linha,coluna,'G');
 
+                if(checkJogada == 1)
+                    break;
+
                 //registo de jogadas
                 sprintf(infoJogada, "Peca Verde na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
-                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+                listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
 
                 vitoria = verificaVitoria(tab);
 
@@ -65,10 +68,10 @@ void doisJogadores()
 
                     //registo de jogadas
                     sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", arrayJogadores[numJogadas%2].identificacao);
-                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
+                    listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(arrayJogadas, tab);
+                    terminarJogo(listaJogadas, tab);
                 }
 
                 break;
@@ -77,9 +80,12 @@ void doisJogadores()
                 pedeCoordenadas(tab,&linha,&coluna);
                 checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'Y');
 
+                if(checkJogada == 1)
+                    break;
+
                 //registo de jogadas
                 sprintf(infoJogada, "Peca Amarela na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
-                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+                listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
 
                 vitoria = verificaVitoria(tab);
 
@@ -89,10 +95,10 @@ void doisJogadores()
 
                     //registo de jogadas
                     sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", arrayJogadores[numJogadas%2].identificacao);
-                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
+                    listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(arrayJogadas, tab);
+                    terminarJogo(listaJogadas, tab);
                 }
 
                 break;
@@ -101,9 +107,12 @@ void doisJogadores()
                 pedeCoordenadas(tab,&linha,&coluna);
                 checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'R');
 
+                if(checkJogada == 1)
+                    break;
+
                 //registo de jogadas
                 sprintf(infoJogada, "Peca Vermelha na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
-                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+                listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
 
                 vitoria = verificaVitoria(tab);
 
@@ -113,10 +122,10 @@ void doisJogadores()
 
                     //registo de jogadas
                     sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", arrayJogadores[numJogadas%2].identificacao);
-                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
+                    listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas+1, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(arrayJogadas, tab);
+                    terminarJogo(listaJogadas, tab);
                 }
 
                 break;
@@ -133,7 +142,7 @@ void doisJogadores()
 
                 //registo de jogadas
                 sprintf(infoJogada, "Pedra na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
-                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
+                listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
 
                 break;
 
@@ -149,7 +158,7 @@ void doisJogadores()
 
                 //registo de jogadas
                 sprintf(infoJogada, "Aumento de uma linha ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
-                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, tab.nLinhas, 0, infoJogada);
+                listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, tab.nLinhas, 0, infoJogada);
 
                 break;
 
@@ -165,7 +174,7 @@ void doisJogadores()
 
                 //registo de jogadas
                 sprintf(infoJogada, "Aumento de uma coluna ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
-                arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, tab.nColunas, infoJogada);
+                listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, tab.nColunas, infoJogada);
 
                 break;
 
@@ -180,10 +189,18 @@ void doisJogadores()
 
                 printf("\n");
 
-                for(int i = numJogadas-1; i >= (numJogadas-nJogadasAnteriores); i--)
-                {
+                ponteiroJogadas aux;
+                aux = listaJogadas;
 
-                    mostrarJogada(arrayJogadas, i);
+                for(int i = 1; i <= (numJogadas-nJogadasAnteriores);i++)
+                {
+                    aux = aux->next;
+                }
+
+                for(int i = 0; i < nJogadasAnteriores; i++)
+                {
+                    mostrarJogada(aux);
+                    aux = aux->next;
                 }
                 checkJogada = 1;
                 break;
@@ -201,10 +218,10 @@ void doisJogadores()
 
                     //registo de jogadas
                     sprintf(infoJogada, "O jogador %c desistiu.\n", arrayJogadores[numJogadas%2].identificacao);
-                    arrayJogadas = adicionarJogada(arrayJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, 0, infoJogada);
+                    listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, 0, infoJogada);
 
                     //terminar jogo
-                    terminarJogo(arrayJogadas, tab);
+                    terminarJogo(listaJogadas, tab);
                 } else{
                     checkJogada = 1;
                 }
@@ -223,9 +240,27 @@ void doisJogadores()
     }
 }
 
-void terminarJogo(jogada *arrayJogadas, tabuleiro tab)
+void terminarJogo(ponteiroJogadas listaJogadas, tabuleiro tab)
 {
-    //guardar registo jogo em ficheiro
+
+    int resultadoFicheiroJogadas;
+    char nomeFicheiro[99];
+
+    printf("Indique o nome do ficheiro onde pretende guardar as jogadas: ");
+    scanf("%s", nomeFicheiro);
+
+    strcat(nomeFicheiro, ".txt");
+
+    resultadoFicheiroJogadas = escreveJogadasFicheiro(nomeFicheiro, listaJogadas);
+
+    if(resultadoFicheiroJogadas)
+    {
+        printf("\nOcorreu um erro a guardar as jogadas no seu ficheiro!\n\n");
+    } else
+    {
+        printf("\nO ficheiro com as jogadas foi criado.\n\n");
+    }
+
     //free tabuleiro
     //free registoJogadas
     //terminar
