@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1621531584 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-5-20\g4ex1\ex1.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"ex1.h"
+
+1621530279 d:\programacao\c\cadeira-programacao---c\praticas\2021-5-20\g4ex1\ex1.h
+
+1621531595 source:d:\programacao\c\cadeira-programacao---c\praticas\2021-5-20\g4ex1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	"ex1.h"
+

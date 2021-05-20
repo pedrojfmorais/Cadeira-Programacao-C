@@ -111,6 +111,7 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
 
                 if(vitoria == 1)
                 {
+
                     declararVitoria(arrayJogadores[(numJogadas)%2].identificacao);
 
                     //registo de jogadas
@@ -285,6 +286,8 @@ int main()
 {
 
     int opcao;
+
+    initRandom();
 
     menuPrincipal();
     do{
