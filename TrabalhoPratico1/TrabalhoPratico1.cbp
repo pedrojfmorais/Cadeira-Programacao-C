@@ -31,6 +31,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="interromperJogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="interromperJogo.h" />
 		<Unit filename="jogadores.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -50,6 +54,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tabuleiro.h" />
+		<Unit filename="tipoJogo.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tipoJogo.h" />
 		<Unit filename="utils.c">
 			<Option compilerVar="CC" />
 		</Unit>

@@ -1,6 +1,6 @@
 -------------------- Jogada 1 --------------------
    1 2 3 4 5
-1 |G| | | | |
+1 | | | | | |
 2 | | | | | |
 3 | | | | | |
 4 | | | | | |
@@ -8,21 +8,7 @@
 
 Jogador A
 Jogada numero 1
-Linha 1, Coluna 1
-Peca Verde na linha 1, coluna 1 pelo jogador A.
---------------------------------------------------
-
--------------------- Jogada 2 --------------------
-   1 2 3 4 5
-1 |G| | | | |
-2 | | | | | |
-3 | | | | | |
-4 | | | | | |
-5 | | | | | |
-
-Jogador B
-Jogada numero 2
 Linha 0, Coluna 0
-O jogador B desistiu.
+O jogador A desistiu.
 --------------------------------------------------
 

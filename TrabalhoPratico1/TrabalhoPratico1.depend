@@ -31,7 +31,7 @@
 	"jogadores.h"
 	"tabuleiro.h"
 
-1621624537 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\main.c
+1621626159 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -72,7 +72,7 @@
 	"tabuleiro.h"
 	"registoJogadas.h"
 
-1621624896 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tipojogo.c
+1621625305 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tipojogo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

@@ -15,7 +15,10 @@ int main()
 
     initRandom();
 
+    printf("\n\n --------- Bem vindo ao Jogo do Semaforo ---------\n\n\n");
+    printf("Escolha um tipo de jogo: \n\n");
     menuPrincipal();
+
     do{
 
         printf("Insira uma opcao: ");
