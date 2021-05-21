@@ -56,7 +56,11 @@ int interromperJogo(int tipoJogo, int numJogadas, jogadores jogadorA, jogadores 
 
     fclose(f);
 
-    terminarJogo(listaJogadas, &tab);
+    printf("\n\n O seu jogo foi guardado, volte mais tarde para continuar. \n\n");
+
+    libertarMemoria(listaJogadas, &tab);
+
+    exit(0);
 }
 
 void lerJogoGuardado()
