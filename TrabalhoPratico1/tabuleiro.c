@@ -80,7 +80,7 @@ void pedeCoordenadas(tabuleiro tab, int *linha, int *coluna)
 
 }
 
-int verificaPeca(tabuleiro tab, jogadores *jogador, int linha, int coluna, char pecaColocar)
+int verificaPeca(tabuleiro tab, int linha, int coluna, char pecaColocar)
 {
     linha = linha-1;
     coluna = coluna-1;
@@ -113,25 +113,15 @@ int verificaPeca(tabuleiro tab, jogadores *jogador, int linha, int coluna, char 
 
     tab.tabuleiro[linha][coluna] = pecaColocar;
 
-    if(pecaColocar = 'P')
-        jogador->pedra--;
-
     return 0;
 }
 
-tabuleiro aumentaLinhas(tabuleiro tab, jogadores *jogador, int *checkJogada)
+tabuleiro aumentaLinhas(tabuleiro tab, int *checkJogada)
 {
     tabuleiro aux;
 
     aux.nLinhas = tab.nLinhas+1;
     aux.nColunas = tab.nColunas;
-
-    if(jogador->aumentarTabuleiro == 0)
-    {
-        printf("\nEste jogador esgotou os seus aumentos do tabuleiro.\n");
-        *checkJogada = 1;
-        return tab;
-    }
 
     aux.tabuleiro = (char**)realloc(tab.tabuleiro, sizeof(char*)*aux.nLinhas);
 
@@ -156,27 +146,16 @@ tabuleiro aumentaLinhas(tabuleiro tab, jogadores *jogador, int *checkJogada)
         aux.tabuleiro[aux.nLinhas-1][j] = ' ';
     }
 
-    jogador->aumentarTabuleiro--;
-
-    mostraTabuleiro(aux);
-
     *checkJogada = 0;
     return aux;
 }
 
-tabuleiro aumentaColunas(tabuleiro tab, jogadores *jogador, int *checkJogada)
+tabuleiro aumentaColunas(tabuleiro tab, int *checkJogada)
 {
     tabuleiro aux;
 
     aux.nLinhas = tab.nLinhas;
     aux.nColunas = tab.nColunas+1;
-
-    if(jogador->aumentarTabuleiro == 0)
-    {
-        printf("\nEste jogador esgotou os seus aumentos do tabuleiro.\n");
-        *checkJogada = 1;
-        return tab;
-    }
 
     aux.tabuleiro = (char**)realloc(tab.tabuleiro, sizeof(char*)*aux.nLinhas);
 
@@ -200,8 +179,6 @@ tabuleiro aumentaColunas(tabuleiro tab, jogadores *jogador, int *checkJogada)
 
         aux.tabuleiro[i][aux.nColunas-1] = ' ';
     }
-
-    jogador->aumentarTabuleiro--;
 
     *checkJogada = 0;
     return aux;
@@ -339,5 +316,5 @@ int verificaVitoria(tabuleiro tab)
 void declararVitoria(char idJogador)
 {
 
-    printf("\n\n\n\n\nO jogador %c ganhou o jogo.\n\n\n\n\n", idJogador);
+    printf("\n\n\n\n\nO jogador %c ganhou o jogo.\n\n\n", idJogador);
 }

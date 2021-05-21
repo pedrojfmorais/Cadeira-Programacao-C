@@ -19,10 +19,10 @@ void menuPrincipal()
 void menuJogadas()
 {
 
-    printf(" '1' - Colocar peca Verde\n");
-    printf(" '2' - Colocar peca Amarela\n");
-    printf(" '3' - Colocar peca Vermelha\n");
-    printf(" '4' - Colocar Pedra\n");
+    printf(" '1' - Colocar peca Verde (G)\n");
+    printf(" '2' - Colocar peca Amarela (Y)\n");
+    printf(" '3' - Colocar peca Vermelha (R)\n");
+    printf(" '4' - Colocar Pedra (P)\n");
     printf(" '5' - Adicionar Linha ao tabuleiro\n");
     printf(" '6' - Adicionar Coluna ao tabuleiro\n");
     printf(" '7' - Ver jogadas anteriores\n");

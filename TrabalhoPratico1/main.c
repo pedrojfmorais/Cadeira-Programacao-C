@@ -44,7 +44,7 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
         {
             case 1:
                 pedeCoordenadas(tab,&linha,&coluna);
-                checkJogada = verificaPeca(tab, &arrayJogadores[numJogadas%2],linha,coluna,'G');
+                checkJogada = verificaPeca(tab,linha,coluna,'G');
 
                 if(checkJogada == 1)
                     break;
@@ -57,7 +57,12 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
 
                 if(vitoria == 1)
                 {
+                    printf("\n\n--------------------------------------------------");
+
+
                     declararVitoria(arrayJogadores[(numJogadas)%2].identificacao);
+                    mostraTabuleiro(tab);
+                    printf("\n\n\n--------------------------------------------------\n\n");
 
                     //registo de jogadas
                     sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", arrayJogadores[numJogadas%2].identificacao);
@@ -71,7 +76,7 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
 
             case 2:
                 pedeCoordenadas(tab,&linha,&coluna);
-                checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'Y');
+                checkJogada = verificaPeca(tab,linha,coluna,'Y');
 
                 if(checkJogada == 1)
                     break;
@@ -84,6 +89,7 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
 
                 if(vitoria == 1)
                 {
+
                     declararVitoria(arrayJogadores[(numJogadas)%2].identificacao);
 
                     //registo de jogadas
@@ -98,7 +104,7 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
 
             case 3:
                 pedeCoordenadas(tab,&linha,&coluna);
-                checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'R');
+                checkJogada = verificaPeca(tab,linha,coluna,'R');
 
                 if(checkJogada == 1)
                     break;
@@ -131,8 +137,12 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
                     checkJogada = 1;
                     break;
                 }
+
                 pedeCoordenadas(tab,&linha,&coluna);
-                checkJogada = verificaPeca(tab,&arrayJogadores[numJogadas%2],linha,coluna,'P');
+                checkJogada = verificaPeca(tab,linha,coluna,'P');
+
+                if(checkJogada == 0)
+                    arrayJogadores[numJogadas%2].pedra = 0;
 
                 //registo de jogadas
                 sprintf(infoJogada, "Pedra na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
@@ -148,7 +158,10 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
                     break;
                 }
 
-                tab = aumentaLinhas(tab, &arrayJogadores[numJogadas%2], &checkJogada);
+                tab = aumentaLinhas(tab, &checkJogada);
+
+                if(checkJogada == 0)
+                    arrayJogadores[numJogadas%2].aumentarTabuleiro -= 1;
 
                 //registo de jogadas
                 sprintf(infoJogada, "Aumento de uma linha ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
@@ -164,7 +177,10 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
                     break;
                 }
 
-                tab = aumentaColunas(tab, &arrayJogadores[numJogadas%2], &checkJogada);
+                tab = aumentaColunas(tab, &checkJogada);
+
+                if(checkJogada == 0)
+                    arrayJogadores[numJogadas%2].aumentarTabuleiro -= 1;
 
                 //registo de jogadas
                 sprintf(infoJogada, "Aumento de uma coluna ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
@@ -200,6 +216,7 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
                 break;
 
             case 9:
+                interromperJogo(2,numJogadas,arrayJogadores[0],arrayJogadores[1],tab,listaJogadas);
                 break;
 
             case 0:
@@ -302,6 +319,7 @@ int main()
     switch(opcao)
     {
         case 0:
+            lerJogoGuardado();
             //continuar jogo
             break;
         case 1:

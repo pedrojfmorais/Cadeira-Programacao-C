@@ -1,9 +1,8 @@
 -------------------- Jogada 1 --------------------
-   1 2 3 4
-1 |G| | | |
-2 | | | | |
-3 | | | | |
-4 | | | | |
+   1 2 3
+1 |G| | |
+2 | | | |
+3 | | | |
 
 Jogador A
 Jogada numero 1
@@ -12,54 +11,27 @@ Peca Verde na linha 1, coluna 1 pelo jogador A.
 --------------------------------------------------
 
 -------------------- Jogada 2 --------------------
-   1 2 3 4
-1 |G| | | |
-2 | |G| | |
-3 | | | | |
-4 | | | | |
+   1 2 3
+1 |G| | |
+2 | | |P|
+3 | | | |
 
 Jogador B
 Jogada numero 2
-Linha 2, Coluna 2
-Peca Verde na linha 2, coluna 2 pelo jogador B.
+Linha 2, Coluna 3
+Pedra na linha 2, coluna 3 pelo jogador B.
 --------------------------------------------------
 
 -------------------- Jogada 3 --------------------
-   1 2 3 4
-1 |G| | | |
-2 | |G| | |
-3 | | |G| |
-4 | | | | |
+   1 2 3
+1 |G| | |
+2 | | |P|
+3 | | | |
+4 | | | |
 
 Jogador A
 Jogada numero 3
-Linha 3, Coluna 3
-Peca Verde na linha 3, coluna 3 pelo jogador A.
---------------------------------------------------
-
--------------------- Jogada 4 --------------------
-   1 2 3 4
-1 |G| | | |
-2 | |G| | |
-3 | | |G| |
-4 | | | |G|
-
-Jogador B
-Jogada numero 4
-Linha 4, Coluna 4
-Peca Verde na linha 4, coluna 4 pelo jogador B.
---------------------------------------------------
-
--------------------- Jogada 5 --------------------
-   1 2 3 4
-1 |G| | | |
-2 | |G| | |
-3 | | |G| |
-4 | | | |G|
-
-Jogador B
-Jogada numero 5
-Linha 0, Coluna 0
-O jogador B ganhou o jogo.
+Linha 4, Coluna 0
+Aumento de uma linha ao tabuleiro pelo jogador A.
 --------------------------------------------------
 
