@@ -2,7 +2,6 @@
 #include <stdlib.h>
 
 #include "tabuleiro.h"
-#include "jogadores.h"
 
 #include "utils.h"
 
@@ -107,7 +106,6 @@ int verificaPeca(tabuleiro tab, int linha, int coluna, char pecaColocar)
 
     if(tab.tabuleiro[linha][coluna] != pecaRequerida)
     {
-        printf("\n\nJogada Invalida!\n");
         return 1;
     }
 
@@ -304,7 +302,7 @@ int verificaVitoria(tabuleiro tab)
             }
 
         }
-        printf("%d", verifica);
+
         if(verifica == tab.nLinhas)
             return 1;
 

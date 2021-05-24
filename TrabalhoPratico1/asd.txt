@@ -1,14 +1,151 @@
 -------------------- Jogada 1 --------------------
-   1 2 3 4 5
-1 | | | | | |
-2 | | | | | |
-3 | | | | | |
-4 | | | | | |
-5 | | | | | |
+   1 2 3 4
+1 |G| | | |
+2 | | | | |
+3 | | | | |
+4 | | | | |
 
 Jogador A
 Jogada numero 1
+Linha 1, Coluna 1
+Peca Verde na linha 1, coluna 1 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 2 --------------------
+   1 2 3 4
+1 |G| | | |
+2 | | | | |
+3 | | | | |
+4 | |P| | |
+
+Jogador B
+Jogada numero 2
+Linha 4, Coluna 2
+Pedra na linha 4, coluna 2 pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 3 --------------------
+   1 2 3 4
+1 |G| | | |
+2 | |G| | |
+3 | | | | |
+4 | |P| | |
+
+Jogador A
+Jogada numero 3
+Linha 2, Coluna 2
+Peca Verde na linha 2, coluna 2 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 4 --------------------
+   1 2 3 4
+1 |G| | | |
+2 | |G| | |
+3 | | | | |
+4 | |P| | |
+5 | | | | |
+
+Jogador B
+Jogada numero 4
+Linha 5, Coluna 0
+Aumento de uma linha ao tabuleiro pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 5 --------------------
+   1 2 3 4
+1 |G| | | |
+2 | |G| | |
+3 | | |G| |
+4 | |P| | |
+5 | | | | |
+
+Jogador A
+Jogada numero 5
+Linha 3, Coluna 3
+Peca Verde na linha 3, coluna 3 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 6 --------------------
+   1 2 3 4 5
+1 |G| | | | |
+2 | |G| | | |
+3 | | |G| | |
+4 | |P| | | |
+5 | | | | | |
+
+Jogador B
+Jogada numero 6
+Linha 0, Coluna 5
+Aumento de uma coluna ao tabuleiro pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 7 --------------------
+   1 2 3 4 5
+1 |G| | | | |
+2 | |G| | | |
+3 | | |G| | |
+4 | |P| |G| |
+5 | | | | | |
+
+Jogador A
+Jogada numero 7
+Linha 4, Coluna 4
+Peca Verde na linha 4, coluna 4 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 8 --------------------
+   1 2 3 4 5
+1 |G| | | | |
+2 | |G| | | |
+3 | | |G| | |
+4 | |P| |G| |
+5 | | |G| | |
+
+Jogador B
+Jogada numero 8
+Linha 5, Coluna 3
+Peca Verde na linha 5, coluna 3 pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 9 --------------------
+   1 2 3 4 5
+1 |G|G| | | |
+2 | |G| | | |
+3 | | |G| | |
+4 | |P| |G| |
+5 | | |G| | |
+
+Jogador A
+Jogada numero 9
+Linha 1, Coluna 2
+Peca Verde na linha 1, coluna 2 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 10 --------------------
+   1 2 3 4 5
+1 |G|G| | | |
+2 | |G| | | |
+3 | | |G| | |
+4 | |P| |G| |
+5 | | |G| |G|
+
+Jogador B
+Jogada numero 10
+Linha 5, Coluna 5
+Peca Verde na linha 5, coluna 5 pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 11 --------------------
+   1 2 3 4 5
+1 |G|G| | | |
+2 | |G| | | |
+3 | | |G| | |
+4 | |P| |G| |
+5 | | |G| |G|
+
+Jogador B
+Jogada numero 11
 Linha 0, Coluna 0
-O jogador A desistiu.
+O jogador B ganhou o jogo.
 --------------------------------------------------
 

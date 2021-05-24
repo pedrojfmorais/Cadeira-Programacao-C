@@ -4,6 +4,7 @@
 #include "jogadores.h"
 #include "tabuleiro.h"
 #include "registoJogadas.h"
+#include "tipoJogo.h"
 
 int interromperJogo(int tipoJogo, int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro tab, ponteiroJogadas listaJogadas)
 {
@@ -158,8 +159,8 @@ void lerJogoGuardado()
 
     if(tipoJogo == 1)
     {
-        printf("\n\n\n\n------------- A retomar UM JOGADORES -------------\n\n\n\n");
-        //umJogador(numJogadas, jogadorA, jogadorB, tab, listaJogadas);
+        printf("\n\n\n\n------------- A retomar UM JOGADOR -------------\n\n\n\n");
+        umJogador(numJogadas, jogadorA, jogadorB, tab, listaJogadas);
     }
     else if(tipoJogo == 2)
     {

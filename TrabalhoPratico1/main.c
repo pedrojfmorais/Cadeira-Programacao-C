@@ -32,10 +32,9 @@ int main()
     {
         case 0:
             lerJogoGuardado();
-            //continuar jogo
             break;
         case 1:
-            // 1 jogador
+            umJogador(0, inicializarJogador('A'), inicializarJogador('B'), inicializarTabuleiro(), NULL);
             break;
         case 2:
             doisJogadores(0, inicializarJogador('A'), inicializarJogador('B'), inicializarTabuleiro(), NULL);

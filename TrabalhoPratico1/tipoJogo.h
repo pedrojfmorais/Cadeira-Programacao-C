@@ -10,6 +10,7 @@
 void umJogador();
 void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro tab, ponteiroJogadas listaJogadas);
 void terminarJogo(ponteiroJogadas listaJogadas, tabuleiro *tab);
+void vitoriaJogo(int numJogadas, jogadores jogador, tabuleiro tab, ponteiroJogadas listaJogadas);
 void libertarMemoria(ponteiroJogadas listaJogadas, tabuleiro *tab);
 
 #endif // TIPOJOGO_H_INCLUDED
