@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "jogadores.h"
 
 void menuPrincipal()
 {
@@ -16,15 +17,15 @@ void menuPrincipal()
     printf(" '9' - Sair\n\n");
 }
 
-void menuJogadas()
+void menuJogadas(jogadores jogador)
 {
 
     printf(" '1' - Colocar peca Verde (G)\n");
     printf(" '2' - Colocar peca Amarela (Y)\n");
     printf(" '3' - Colocar peca Vermelha (R)\n");
-    printf(" '4' - Colocar Pedra (P)\n");
-    printf(" '5' - Adicionar Linha ao tabuleiro\n");
-    printf(" '6' - Adicionar Coluna ao tabuleiro\n");
+    printf(" '4' - Colocar Pedra (P) (Restantes: %d)\n", jogador.pedra);
+    printf(" '5' - Adicionar Linha ao tabuleiro (Restantes: %d)\n", jogador.aumentarTabuleiro);
+    printf(" '6' - Adicionar Coluna ao tabuleiro (Restantes: %d)\n", jogador.aumentarTabuleiro);
     printf(" '7' - Ver jogadas anteriores\n");
     printf(" '9' - Interromper Jogo\n");
     printf(" '0' - Desistir\n\n");

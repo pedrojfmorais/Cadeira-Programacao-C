@@ -38,7 +38,7 @@ void umJogador(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro
             mostraTabuleiro(tab);
 
             do{
-                if(tab.tabuleiro[linha-1][coluna-1] == 'P')
+                if(tab.tabuleiro[linha-1][coluna-1] == 'P' || tab.tabuleiro[linha-1][coluna-1] == 'R')
                 {
                     linha = intUniformRnd(1,tab.nLinhas);
                     coluna = intUniformRnd(1,tab.nColunas);
@@ -162,7 +162,7 @@ void umJogador(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro
                 printf("Jogador %c.\n\n", arrayJogadores[numJogadas%2].identificacao);
 
                 mostraTabuleiro(tab);
-                menuJogadas();
+                menuJogadas(arrayJogadores[numJogadas%2]);
                 printf("--------------------------------------------------\n");
                 do{
 
@@ -196,7 +196,7 @@ void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabul
         printf("Jogador %c.\n\n", arrayJogadores[numJogadas%2].identificacao);
 
         mostraTabuleiro(tab);
-        menuJogadas();
+        menuJogadas(arrayJogadores[numJogadas%2]);
         printf("--------------------------------------------------\n");
         do{
 
