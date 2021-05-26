@@ -5,6 +5,7 @@
 #include "tabuleiro.h"
 #include "registoJogadas.h"
 
+//declara as funções criadas no ficheiro "interromperJogo.c"
 int interromperJogo(int tipoJogo, int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro tab, ponteiroJogadas listaJogadas);
 void lerJogoGuardado();
 

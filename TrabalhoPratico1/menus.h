@@ -3,6 +3,7 @@
 
 #include "jogadores.h"
 
+//declaração das funções criadas no ficheiro "menus.c"
 void menuPrincipal();
 void menuJogadas(jogadores jogador);
 

@@ -3,15 +3,21 @@
 
 #include "jogadores.h"
 
+//estrutura do tabuleiro
 struct Tabuleiro {
 
+    //guarda num array bidimensional dinâmico o estado do tabuleiro
     char **tabuleiro;
+
+    //guarda o numero de linha e de colunas do tabuleiro
     int nLinhas;
     int nColunas;
 };
 
+//cria um alias para "struct Tabuleiro" para "tabuleiro"
 typedef struct Tabuleiro tabuleiro;
 
+//declaração das funções criadas no ficheiro "tabuleiro.c"
 tabuleiro inicializarTabuleiro();
 void mostraTabuleiro(tabuleiro tab);
 void pedeCoordenadas(tabuleiro tab, int *linha, int *coluna);
@@ -24,4 +30,5 @@ tabuleiro copiarTabuleiro(tabuleiro tabRecebido);
 
 int verificaVitoria(tabuleiro tab);
 void declararVitoria(char idJogador);
+
 #endif // TABULEIRO_H_INCLUDED

@@ -24,7 +24,7 @@
 	<stdio.h>
 	"jogadores.h"
 
-1621163032 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.c
+1622052361 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -32,7 +32,7 @@
 	"jogadores.h"
 	"tabuleiro.h"
 
-1621877699 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\main.c
+1622040120 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -44,7 +44,7 @@
 1621965738 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.h
 	"jogadores.h"
 
-1621617353 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tabuleiro.h
+1622040010 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tabuleiro.h
 	"jogadores.h"
 
 1619260467 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\utils.c
@@ -63,7 +63,7 @@
 
 1619261572 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.h
 
-1621161271 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.h
+1622051095 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.h
 	"tabuleiro.h"
 
 1621887309 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\interromperjogo.c
@@ -74,7 +74,7 @@
 	"registoJogadas.h"
 	"tipoJogo.h"
 
-1621966628 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tipojogo.c
+1621981102 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tipojogo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
