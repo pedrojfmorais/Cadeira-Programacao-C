@@ -15,16 +15,16 @@
 
 1619257893 d:\programacao\c\cadeira-programacao---c\praticas\2021-4-15\trabalhopratico1\menus.h
 
-1619261530 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.c
+1622053346 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.c
 	<stdio.h>
 	<stdlib.h>
 	"jogadores.h"
 
-1621965552 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.c
+1622053154 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.c
 	<stdio.h>
 	"jogadores.h"
 
-1622052361 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.c
+1622052713 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -41,10 +41,10 @@
 	"tabuleiro.h"
 	"tipoJogo.h"
 
-1621965738 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.h
+1622052729 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\menus.h
 	"jogadores.h"
 
-1622040010 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tabuleiro.h
+1622155166 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tabuleiro.h
 	"jogadores.h"
 
 1619260467 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\utils.c
@@ -61,12 +61,12 @@
 	"tabuleiro.h"
 	"utils.h"
 
-1619261572 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.h
+1622053245 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\jogadores.h
 
 1622051095 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\registojogadas.h
 	"tabuleiro.h"
 
-1621887309 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\interromperjogo.c
+1622068702 source:d:\programacao\c\cadeira-programacao---c\trabalhopratico1\interromperjogo.c
 	<stdio.h>
 	<stdlib.h>
 	"jogadores.h"
@@ -84,12 +84,12 @@
 	"registoJogadas.h"
 	"interromperJogo.h"
 
-1621620299 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\interromperjogo.h
+1622053442 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\interromperjogo.h
 	"jogadores.h"
 	"tabuleiro.h"
 	"registoJogadas.h"
 
-1621880676 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tipojogo.h
+1622068788 d:\programacao\c\cadeira-programacao---c\trabalhopratico1\tipojogo.h
 	"menus.h"
 	"jogadores.h"
 	"tabuleiro.h"

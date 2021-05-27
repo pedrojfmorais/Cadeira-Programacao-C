@@ -9,7 +9,7 @@
 //função que adiciona um novo nó à lista ligada, no fim da lista fornecida
 ponteiroJogadas adicionarJogada(ponteiroJogadas listaJogadas, tabuleiro tab, char idJogador, int nJogada, int linha, int coluna, char infoJogada[])
 {
-    //cria dois ponteiro, um para o novo nó da lista e outro auxiliar para maniopular a lista ligada
+    //cria dois ponteiro, um para o novo nó da lista e outro auxiliar para manipular a lista ligada
     ponteiroJogadas nova, aux;
 
     //aloca memória para o novo nó da lista
@@ -22,7 +22,7 @@ ponteiroJogadas adicionarJogada(ponteiroJogadas listaJogadas, tabuleiro tab, cha
         return listaJogadas;
     }
 
-    //chama a função copiarTabuleiro para criar uma cópia do tabuleiro atual
+    //chama a função "copiarTabuleiro" para criar uma cópia do tabuleiro atual
     nova->tab = copiarTabuleiro(tab);
 
     //guarda os dados recebidos como parâmetro nas variáveis do nó
@@ -57,7 +57,7 @@ ponteiroJogadas adicionarJogada(ponteiroJogadas listaJogadas, tabuleiro tab, cha
     return listaJogadas;
 }
 
-//função que mostra as variáveis de um nó da listya fornecido
+//função que mostra as variáveis de um nó da lista fornecido
 void mostrarJogada(ponteiroJogadas listaJogadas)
 {
 
@@ -104,7 +104,7 @@ int escreveJogadasFicheiro(char *nomeFicheiro, ponteiroJogadas listaJogadas)
             //imprime na variável "auxTexto" o número da coluna
             sprintf(auxTexto, " %d", i+1);
 
-            //e concateniza com o conteudo de "linhaTabela"
+            //e concateniza com o conteúdo de "linhaTabela"
             strcat(linhaTabela, auxTexto);
         }
 

@@ -14,7 +14,7 @@ struct Tabuleiro {
     int nColunas;
 };
 
-//cria um alias para "struct Tabuleiro" para "tabuleiro"
+//cria um alias para "struct Tabuleiro" de "tabuleiro"
 typedef struct Tabuleiro tabuleiro;
 
 //declaração das funções criadas no ficheiro "tabuleiro.c"
@@ -29,6 +29,5 @@ tabuleiro aumentaColunas(tabuleiro tab, int *checkJogada);
 tabuleiro copiarTabuleiro(tabuleiro tabRecebido);
 
 int verificaVitoria(tabuleiro tab);
-void declararVitoria(char idJogador);
 
 #endif // TABULEIRO_H_INCLUDED

@@ -8,14 +8,16 @@
 #include "registoJogadas.h"
 #include "interromperJogo.h"
 
+//função de jogo para um jogador
 void umJogador(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro tab, ponteiroJogadas listaJogadas)
 {
-
+    //declaração de variáveis
     int linha, coluna;
     int opcao;
 
     int checkJogada = 0;
 
+    //criação de um array para os jogadores para alternar entre os dois conforme a jogada
     jogadores arrayJogadores[2] = {jogadorA,jogadorB};
 
     char infoJogada[100];
@@ -23,21 +25,28 @@ void umJogador(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro
 
     int vitoria = 0;
 
+    //inicia o jogo
     while(1)
     {
 
+        //caso seja a vez do computador jogar, Jogador B
         if(arrayJogadores[numJogadas%2].identificacao == 'B')
         {
 
+            //recebe um número random entre '1' e o limite do tabuleiro, para as linhas e para as colunas
             linha = intUniformRnd(1,tab.nLinhas);
             coluna = intUniformRnd(1,tab.nColunas);
 
+            //mostra o jogador que está a jogar
             printf("\n\n--------------------------------------------------\n");
             printf("Jogador %c.\n\n", arrayJogadores[numJogadas%2].identificacao);
 
+            //mostra o tabuleiro
             mostraTabuleiro(tab);
 
+            //enquanto não realizar um jogada válida
             do{
+                //se na posição gerada aleatoriamente estiver uma pedra ou uma peça vermelha volta a gerar as linhas e colunas e volta ao início do ciclo "do while"
                 if(tab.tabuleiro[linha-1][coluna-1] == 'P' || tab.tabuleiro[linha-1][coluna-1] == 'R')
                 {
                     linha = intUniformRnd(1,tab.nLinhas);
@@ -45,102 +54,136 @@ void umJogador(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro
                     continue;
                 }
 
+                //gera um número aleatório entre 1 e 4 para a operação que o computador realizar
                 opcao = intUniformRnd(1,4);
 
+                //caso a opção gerada for
                 switch(opcao)
                 {
+                    // '1' coloca uma peça de cor no local gerado anteriormente aleatoriamente
                     case 1:
+
                         if(tab.tabuleiro[linha-1][coluna-1] == ' ')
                         {
+                            //se o local gerado anteriormente estiver em branco coloca uma peça verde
                             checkJogada = verificaPeca(tab,linha,coluna,'G');
                             sprintf(infoJogada, "Peca Verde na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
 
                         } else if(tab.tabuleiro[linha-1][coluna-1] == 'G')
                         {
+                            //se tiver uma peça verde coloca uma peça amarela
                             checkJogada = verificaPeca(tab,linha,coluna,'Y');
                             sprintf(infoJogada, "Peca Amarela na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
 
                         }else if(tab.tabuleiro[linha-1][coluna-1] == 'Y')
                         {
+                            //se tiver uma peça amarela coloca um peça vermelha
                             checkJogada = verificaPeca(tab,linha,coluna,'R');
                             sprintf(infoJogada, "Peca Vermelha na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
 
                         }else{
+                            //caso contrário diz que está numa jogada inválida
                             checkJogada = 1;
                         }
 
+                        //se estiver em uma jogada invalida sai do switch
                         if(checkJogada == 1)
                             break;
 
                         //registo de jogadas
-
+                        //adiciona à lista de jogadas a jogada atual
                         listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
 
+                        //verifica se o computador ganhou, e se sim declara vitória ao chamar a função "vitoriaJogo"
                         if(verificaVitoria(tab) == 1)
                         {
                             vitoriaJogo(numJogadas, arrayJogadores[numJogadas%2], tab, listaJogadas);
                         }
                         break;
 
+                    //caso selecione 2 coloca uma pedra no local gerado
                     case 2:
 
+                        // se o computador não tiver mais pedras diz que é uma jogada invalida e sai do switch
                         if(arrayJogadores[numJogadas%2].pedra == 0)
                         {
                             checkJogada = 1;
                             break;
                         }
 
+                        //caso ainda tenha pedras restantes tenta colocar a pedra no local gerado anteriormente
                         checkJogada = verificaPeca(tab,linha,coluna,'P');
 
+                        //se a jogada correu bem decrementa o número de pedras do jogador
                         if(checkJogada == 0)
-                            arrayJogadores[numJogadas%2].pedra = 0;
+                            arrayJogadores[numJogadas%2].pedra -= 1;
 
                         //registo de jogadas
+                        // imprime para a string "infoJogada" um pequeno comentário sobre a jogada que ocorreu
                         sprintf(infoJogada, "Pedra na linha %d, coluna %d pelo jogador %c.\n", linha, coluna, arrayJogadores[numJogadas%2].identificacao);
+                        //adiciona à lista de jogadas a jogada atual
                         listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, linha, coluna, infoJogada);
 
                         break;
 
+                    //caso selecione 3 incrementa o número de linhas do tabuleiro
                     case 3:
 
+                        //verifica se o utilizador ainda pode incrementar o tabuleiro caso contrário diz que é jogada inválida e sai do switch
                         if(arrayJogadores[numJogadas%2].aumentarTabuleiro == 0)
                         {
                             checkJogada = 1;
                             break;
                         }
 
+                        //tenta aumentar o tabuleiro
                         tab = aumentaLinhas(tab, &checkJogada);
 
+                        //caso a operação seja realizada com sucesso decrementa o número de vezes que o utilizador pode incrementar o tabuleiro
                         if(checkJogada == 0)
                             arrayJogadores[numJogadas%2].aumentarTabuleiro -= 1;
 
                         //registo de jogadas
+                        // imprime para a string "infoJogada" um pequeno comentário sobre a jogada que ocorreu
                         sprintf(infoJogada, "Aumento de uma linha ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
+                        //adiciona à lista de jogadas a jogada atual
                         listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, tab.nLinhas, 0, infoJogada);
 
                         break;
 
+                    //caso selecione 4 incrementa o número de colunas do tabuleiro
                     case 4:
 
+                        //verifica se o utilizador ainda pode incrementar o tabuleiro caso contrário diz que é jogada inválida e sai do switch
                         if(arrayJogadores[numJogadas%2].aumentarTabuleiro == 0)
                         {
                             checkJogada = 1;
                             break;
                         }
 
+                        //tenta aumentar o tabuleiro
                         tab = aumentaColunas(tab, &checkJogada);
 
+                        //caso a operação seja realizada com sucesso decrementa o número de vezes que o utilizador pode incrementar o tabuleiro
                         if(checkJogada == 0)
                             arrayJogadores[numJogadas%2].aumentarTabuleiro -= 1;
 
                         //registo de jogadas
+                        // imprime para a string "infoJogada" um pequeno comentário sobre a jogada que ocorreu
                         sprintf(infoJogada, "Aumento de uma coluna ao tabuleiro pelo jogador %c.\n", arrayJogadores[numJogadas%2].identificacao);
+                        //adiciona à lista de jogadas a jogada atual
                         listaJogadas = adicionarJogada(listaJogadas, tab, arrayJogadores[numJogadas%2].identificacao, numJogadas, 0, tab.nColunas, infoJogada);
 
                         break;
 
+                    //caso a opção recebida não for uma das anteriores mostra esta mensagem de erro
+                    default:
+                        printf("Ocorreu  um erro, tente novamente!\n");
+                        break;
+
                 }
 
+                //caso a jogada seja válida incrementa o número de jogadas para passar para o próximo jogador
                 if(checkJogada == 0)
                 {
                     numJogadas++;
@@ -149,29 +192,36 @@ void umJogador(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro
 
             }while(checkJogada == 1);
 
-
+            //imprime a informação sobre a jogada que ocorreu para o utilizador
             printf("%s\n", infoJogada);
 
             printf("--------------------------------------------------\n");
         }
         else
         {
+            //caso seja a vez do utilizador a jogar
             while(1)
             {
+                //mostra o utilizador atual
                 printf("\n\n--------------------------------------------------\n");
                 printf("Jogador %c.\n\n", arrayJogadores[numJogadas%2].identificacao);
 
+                //mostra o estado do tabuleiro e as possíveis jogadas do utilizador
                 mostraTabuleiro(tab);
                 menuJogadas(arrayJogadores[numJogadas%2]);
                 printf("--------------------------------------------------\n");
+
+                //verificação da opção inserida pelo utilizador
                 do{
 
                     printf("Escolha uma jogada: ");
                     scanf("%d", &opcao);
                 }while(opcao < 0 || opcao > 7 && opcao != 9);
 
+                //chama a função "switchHumano" para decifrar, verificar e executar a operação desejada pelo utilizador
                 switchJogadorHumano(numJogadas, &arrayJogadores, &tab, &listaJogadas, opcao, &checkJogada, 1);
 
+                //se a jogada for válida incrementa o número de jogadas para passar para o próximo jogador e sai do ciclo "while"
                 if(checkJogada == 0)
                 {
                     numJogadas++;
@@ -183,29 +233,39 @@ void umJogador(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro
     }
 }
 
+//função de jogo para dois jogadores
 void doisJogadores(int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro tab, ponteiroJogadas listaJogadas)
 {
+    //declaração de variáveis
     int checkJogada = 0;
     int opcao;
 
+    //criação de um array para os jogadores para alternar entre os dois conforme a jogada
     jogadores arrayJogadores[2] = {jogadorA,jogadorB};
 
+    //inicio do jogo
     while(1)
     {
+        //mostra o jogador atual
         printf("\n\n--------------------------------------------------\n");
         printf("Jogador %c.\n\n", arrayJogadores[numJogadas%2].identificacao);
 
+        //mostra o tabuleiro
         mostraTabuleiro(tab);
+        //mostra as jogadas possíveis para o utilizador
         menuJogadas(arrayJogadores[numJogadas%2]);
         printf("--------------------------------------------------\n");
+        //verificação da opção selecionada pelo utilizador
         do{
 
             printf("Escolha uma jogada: ");
             scanf("%d", &opcao);
         }while(opcao < 0 || opcao > 7 && opcao != 9);
 
+        //envia para a função os dados necessários para realizar a jogada selecionada
         switchJogadorHumano(numJogadas, &arrayJogadores, &tab, &listaJogadas, opcao, &checkJogada,2);
 
+        //se a jogada correr bem passa para a próxima jogada
         if(checkJogada == 0)
             numJogadas++;
 
@@ -325,7 +385,7 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                     break;
                 }
 
-                //caso ainda tenha pedras para colocar, pede as coordenadas do tabuleiro onde pretende colocar a peça
+                //caso ainda tenha pedras para colocar, pede as coordenadas do tabuleiro onde pretende colocar a pedra
                 pedeCoordenadas(*tab,&linha,&coluna);
                 //verifica se é possivel colocar a pedra, e se sim coloca-a
                 *checkJogada = verificaPeca(*tab,linha,coluna,'P');
@@ -338,9 +398,9 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                     break;
                 }
 
-                //caso devolva 0 significa que colocou a pedra e por isso o jogador esgotou as pedras que pode colocar
+                //caso devolva 0 significa que colocou a pedra e por isso decrementa o número de pedras do utilizador
                 if(*checkJogada == 0)
-                    arrayJogadores[numJogadas%2].pedra = 0;
+                    arrayJogadores[numJogadas%2].pedra -= 1;
 
                 //registo de jogadas
                 // imprime para a string "infoJogada" um pequeno comentário sobre a jogada que ocorreu
@@ -363,10 +423,10 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                     break;
                 }
 
-                //caso ainda tenha aumentos para fazer, chama a função que aumenta o numero de linhas do tabuleiro
+                //caso ainda tenha aumentos para fazer, chama a função que aumenta o número de linhas do tabuleiro
                 *tab = aumentaLinhas(*tab, checkJogada);
 
-                //se a função de aumentar o tabuleiro devolver '0' significa que consegui aumentar o tabuleiro
+                //se a função de aumentar o tabuleiro devolver '0' significa que conseguiu aumentar o tabuleiro
                 if(*checkJogada == 0)
                 {
                     //como aumentou o tabuleiro vai decrementar os aumentos restantes do utilizador
@@ -397,7 +457,7 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                     break;
                 }
 
-                //caso ainda tenha aumentos para fazer, chama a função que aumenta o numero de colunas do tabuleiro
+                //caso ainda tenha aumentos para fazer, chama a função que aumenta o número de colunas do tabuleiro
                 *tab = aumentaColunas(*tab, checkJogada);
 
                 //se a função de aumentar o tabuleiro devolver '0' significa que consegui aumentar o tabuleiro
@@ -425,7 +485,7 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                 //imprime na consola uma mensagem a indicar o número de jogadas que decorreram até ao momento no jogo
                 printf("\nOcorreram ate agora %d jogadas.\n", numJogadas);
                 do{
-                    //pede o número de jogadas que o utilizador pretende ver e verifica o numero introduzido
+                    //pede o número de jogadas que o utilizador pretende ver e verifica o número introduzido
                     printf("Ver ultimas 'x' jogadas: ");
                     scanf("%d", &nJogadasAnteriores);
                 }while(nJogadasAnteriores < 0 || nJogadasAnteriores > numJogadas);
@@ -436,7 +496,7 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                 ponteiroJogadas aux;
                 aux = *listaJogadas;
 
-                //começa no primeiro nó e vai até ao nó numero de jogadas atual menos numero de jogadas que o utilizador pretende ver
+                //começa no primeiro nó e vai até ao nó número de jogadas atual menos número de jogadas que o utilizador pretende ver
                 for(int i = 1; i <= (numJogadas-nJogadasAnteriores);i++)
                 {
                     //passa para o próximo nó da lista
@@ -472,7 +532,7 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                 if(opcao == 'y' || opcao == 'Y')
                 {
                     //declara vitória ao outro jogador
-                    declararVitoria(arrayJogadores[(numJogadas+1)%2].identificacao);
+                    printf("\n\n\n\n\nO jogador %c ganhou o jogo.\n\n\n", arrayJogadores[(numJogadas+1)%2].identificacao);
 
                     //registo de jogadas
                     // imprime para a string "infoJogada" que o jogador atual desistiu
@@ -548,7 +608,7 @@ void vitoriaJogo(int numJogadas, jogadores jogador, tabuleiro tab, ponteiroJogad
     sprintf(infoJogada, "O jogador %c ganhou o jogo.\n", jogador.identificacao);
     listaJogadas = adicionarJogada(listaJogadas, tab, jogador.identificacao, numJogadas+1, 0, 0, infoJogada);
 
-    //chama a funçãoterminar jogo
+    //chama a função "terminar jogo"
     terminarJogo(listaJogadas, &tab);
 
 }

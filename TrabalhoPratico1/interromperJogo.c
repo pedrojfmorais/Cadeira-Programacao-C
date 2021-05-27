@@ -6,13 +6,13 @@
 #include "registoJogadas.h"
 #include "tipoJogo.h"
 
-//função que guarda o estado do jogo, de forma a poder ser retomado mais tarde
+//função que guarda o estado do jogo, de forma a puder ser retomado mais tarde
 int interromperJogo(int tipoJogo, int numJogadas, jogadores jogadorA, jogadores jogadorB, tabuleiro tab, ponteiroJogadas listaJogadas)
 {
     /*
         recebe:
             tipoJogo -> 1 = 1 jogador; 2 = 2 jogadoress
-            numJogadas -> numero de jogadas
+            numJogadas -> número de jogadas
             jogadorA -> estrutura com os dados do jogador A
             jogadorB -> estrutura com os dados do jogador B
             tab -> tabuleiro atual de jogo
@@ -57,7 +57,7 @@ int interromperJogo(int tipoJogo, int numJogadas, jogadores jogadorA, jogadores 
     {
         //escreve as informações simples,
         fwrite(&aux->jogador, sizeof(char), 1, f); //identificação jogador
-        fwrite(&aux->nJogada, sizeof(int), 1, f); //numero da jogada
+        fwrite(&aux->nJogada, sizeof(int), 1, f); //número da jogada
         fwrite(&aux->linhaAfetada, sizeof(int), 1, f); // linha afetada pela jogada
         fwrite(&aux->colunaAfetada, sizeof(int), 1, f); // coluna afetada pela jogada
         fwrite(&aux->infoJogada, sizeof(char), 100, f); //texto descritivo da jogada

@@ -12,10 +12,10 @@ tabuleiro inicializarTabuleiro()
     //declara a estrutura do tipo tabuleiro
     tabuleiro tab;
 
-    //recebe um número random entre 3 e 5, valor este que vai ser o numero de linhas/colunas do tabuleiro de jogo
+    //recebe um número random entre 3 e 5, valor este que vai ser o número de linhas/colunas do tabuleiro de jogo
     int tam = intUniformRnd(3,5);
 
-    //cria array dinamico com 'tam' numero de linhas
+    //cria array dinâmico com 'tam' número de linhas
     tab.tabuleiro = (char**)malloc(sizeof(char*)*tam);
 
     //verifica se a alocação de memória foi realizada com sucesso
@@ -25,10 +25,10 @@ tabuleiro inicializarTabuleiro()
         return;
     }
 
-    //para cada linha cria 'tam' numero de colunas
+    //para cada linha cria 'tam' número de colunas
     for (int i=0; i<tam; i++)
     {
-        //aloca o es+aço para cada coluna
+        //aloca o espaço para cada coluna
         tab.tabuleiro[i] = (char*)malloc(sizeof(char)* tam );
 
         //verifica se estas foram alocadas com sucesso
@@ -47,7 +47,7 @@ tabuleiro inicializarTabuleiro()
 
     }
 
-    //inicializa o numero de linhas e colunas com o numero random recebido em "tam"
+    //inicializa o número de linhas e colunas com o número random recebido em "tam"
     tab.nLinhas = tam;
     tab.nColunas = tam;
 
@@ -58,14 +58,14 @@ tabuleiro inicializarTabuleiro()
 void mostraTabuleiro(tabuleiro tab)
 {
     printf("  ");
-    //mostra o numero das colunas
+    //mostra o número das colunas
     for(int i = 0; i < tab.nColunas;i++)
         printf(" %d", i+1);
 
     //para cada linha
     for(int i = 0; i < tab.nLinhas; i++)
     {
-        //imprime o numero da linha
+        //imprime o número da linha
         printf("\n%d |", i+1);
 
         //para cada coluna da linha
@@ -98,11 +98,11 @@ void pedeCoordenadas(tabuleiro tab, int *linha, int *coluna)
 //função que verifica se é possivel colocar a peça que o pretende no local dito pelo mesmo
 int verificaPeca(tabuleiro tab, int linha, int coluna, char pecaColocar)
 {
-    //ao valor introduzido pelo utilizador para as linhas e colunas é decrementado um para se tornar no indice para a tabela
+    //ao valor introduzido pelo utilizador para as linhas e colunas é decrementado um para se tornar no índice para a tabela
     linha = linha-1;
     coluna = coluna-1;
 
-    //variavel que guarda a peça que é necessária no local designado para colocar a peça que o utilizador pretende
+    //variável que guarda a peça que é necessária no local designado para colocar a peça que o utilizador pretende
     char pecaRequerida = ' ';
 
     switch(pecaColocar)
@@ -131,13 +131,13 @@ int verificaPeca(tabuleiro tab, int linha, int coluna, char pecaColocar)
             return 1;
     }
 
-    //se a peça no tabuleiro não for a requerida devolve 1
+    //se a peça no tabuleiro não for a requerida devolve '1'
     if(tab.tabuleiro[linha][coluna] != pecaRequerida)
     {
         return 1;
     }
 
-    //como a peça no tabuleiro é a requerida pode colocar a peça do utilizador e devolve 0
+    //como a peça no tabuleiro é a requerida pode colocar a peça do utilizador e devolve '0'
     tab.tabuleiro[linha][coluna] = pecaColocar;
 
     return 0;
@@ -146,23 +146,23 @@ int verificaPeca(tabuleiro tab, int linha, int coluna, char pecaColocar)
 //função que aumenta o número de linhas do tabuleiro
 tabuleiro aumentaLinhas(tabuleiro tab, int *checkJogada)
 {
-    //a variavel checkJogada aponta para uma variavel onde é guardado um inteiro que indica se esta função conseguiu atingir o seu objetivo com sucesso
+    //a variavel "checkJogada" aponta para uma variável onde é guardado um inteiro que indica se esta função conseguiu atingir o seu objetivo com sucesso
 
     //cria uma nova estrutura tabuleiro auxiliar
     tabuleiro aux;
 
-    //copia do tabuleiro recebido o numero de linhas e colunas, mas como queremos aumentar as linhas incrementamos as linhas em 1
+    //copia do tabuleiro recebido o número de linhas e colunas, mas como queremos aumentar as linhas incrementamos as linhas em 1
     aux.nLinhas = tab.nLinhas+1;
     aux.nColunas = tab.nColunas;
 
-    // realoca espaço para o novo numero de linhas, sendo que usa o tabuleiro recebido como primeiro parâmetro para manter os dados da tabela para as linhas que já estavam criadas
+    // realoca espaço para o novo número de linhas, sendo que usa o tabuleiro recebido como primeiro parâmetro para manter os dados da tabela para as linhas que já estavam criadas
     aux.tabuleiro = (char**)realloc(tab.tabuleiro, sizeof(char*)*aux.nLinhas);
 
     //verifica se a alocação correu bem
     if(aux.tabuleiro == NULL)
     {
         printf("Ocorreu um erro a alocar memória!");
-        //coloca '1' no endereço apontado por checkJogada
+        //coloca '1' no endereço apontado por "checkJogada" caso corra mal a alocação
         *checkJogada = 1;
         return tab;
     }
@@ -174,7 +174,7 @@ tabuleiro aumentaLinhas(tabuleiro tab, int *checkJogada)
     if(aux.tabuleiro[aux.nLinhas-1] == NULL)
     {
         printf("Erro na alocacao de memoria");
-        //coloca '1' no endereço apontado por checkJogada
+        //coloca '1' no endereço apontado por "checkJogada" caso corra mal a alocação
         *checkJogada = 1;
         return tab;
     }
@@ -185,7 +185,7 @@ tabuleiro aumentaLinhas(tabuleiro tab, int *checkJogada)
         aux.tabuleiro[aux.nLinhas-1][j] = ' ';
     }
 
-    //devolve o tabuleiro auxiliar e coloca '0' no endereço apontado por checkJogada
+    //devolve o tabuleiro auxiliar e coloca '0' no endereço apontado por "checkJogada"
     *checkJogada = 0;
     return aux;
 }
@@ -193,7 +193,7 @@ tabuleiro aumentaLinhas(tabuleiro tab, int *checkJogada)
 //função que aumenta o número de colunas do tabuleiro
 tabuleiro aumentaColunas(tabuleiro tab, int *checkJogada)
 {
-    //a variavel checkJogada aponta para uma variavel onde é guardado um inteiro que indica se esta função conseguiu atingir o seu objetivo com sucesso
+    //a variável "checkJogada" aponta para uma variável onde é guardado um inteiro que indica se esta função conseguiu atingir o seu objetivo com sucesso
 
     //estrutura tabuleiro auxiliar onde serão realizadas as alterações
     tabuleiro aux;
@@ -245,7 +245,7 @@ tabuleiro copiarTabuleiro(tabuleiro tabRecebido)
     //cria uma nova estrutura tabuleiro
     tabuleiro tab;
 
-    //aloca o mesmo numero de linhas do tabuleiro recebido
+    //aloca o mesmo número de linhas do tabuleiro recebido
     tab.tabuleiro = (char**)malloc(sizeof(char*)*tabRecebido.nLinhas);
 
     //verifica se a alocação correu bem
@@ -277,7 +277,7 @@ tabuleiro copiarTabuleiro(tabuleiro tabRecebido)
 
     }
 
-    //coloca o numero de linhas e colunas iguais aos da tabela recebida
+    //coloca o número de linhas e colunas iguais aos da tabela recebida
     tab.nLinhas = tabRecebido.nLinhas;
     tab.nColunas = tabRecebido.nColunas;
 
@@ -314,12 +314,12 @@ int verificaVitoria(tabuleiro tab)
                 verifica++;
             }else
             {
-                //caso um falhe não vale a pena verificar as restantes colunas por isso passa para a próxima linha
+                //caso uma falhe não vale a pena verificar as restantes colunas por isso sai do segundo ciclo for
                 break;
             }
         }
 
-        //se o contador "verifica" tiver o mesmo número que o número de colunas significa que
+        //se o contador "verifica" tiver o mesmo número que o número de colunas significa que ganhou
         if(verifica == tab.nColunas)
             return 1;
     }
@@ -345,12 +345,12 @@ int verificaVitoria(tabuleiro tab)
                 verifica++;
             }else
             {
-                //se uma das linhas dessa coluna estiver incorreta passa para a próxima coluna
+                //se uma das linhas dessa coluna estiver incorreta sai do segundo ciclo for
                 break;
             }
         }
 
-        //se o numero no "verifica" for igual ao numero de linhas significa que tem uma coluna completa igual
+        //se o número no "verifica" for igual ao número de linhas significa que tem uma coluna completa igual
         if(verifica == tab.nLinhas)
             return 1;
     }
@@ -364,7 +364,7 @@ int verificaVitoria(tabuleiro tab)
         //verificamos as células nas posições 1x1, 2x2, 3x3, etc
         verifica = 0;
 
-        //o valor de i vai de 0 até nLinhas-1, pois é i menor que nLinhas
+        //o valor de i vai de '0' até 'nLinhas-1', pois é 'i' menor que nLinhas
         for(int i = 0; i < tab.nLinhas; i++)
         {
             //verifica se as células da diagonal principal são iguais à primeira posição da diagonal e se são diferentes de espaço em branco
@@ -373,7 +373,7 @@ int verificaVitoria(tabuleiro tab)
                 verifica++;
             }else
             {
-                // se for diferente ou um espaço em branco não acaba a verificação, pois, um já falhou
+                // se for diferente ou um espaço em branco não acaba a verificação, pois, uma já falhou
                 break;
             }
         }
@@ -387,7 +387,7 @@ int verificaVitoria(tabuleiro tab)
         //verificamos as células nas posições 3x1, 2x2, 3x1, exemplo para uma matriz 3x3
         verifica = 0;
 
-        //começa na primeira linha, 0, e na última coluna, nLinhas-1, enquanto o i for menor que o número total de linhas executa,
+        //começa na primeira linha, '0', e na última coluna, 'nLinhas-1', enquanto o 'i' for menor que o número total de linhas executa,
         // e incremeta o número de linhas e decrementa o número de colunas
         for(int i = 0, j = tab.nLinhas-1; i < tab.nLinhas; i++, j--)
         {
@@ -412,11 +412,4 @@ int verificaVitoria(tabuleiro tab)
 
     //caso não encontre vitória devolve '0'
     return 0;
-}
-
-//função que imprime no ecrã o nome do utilizador que ganhou o jogo
-void declararVitoria(char idJogador)
-{
-
-    printf("\n\n\n\n\nO jogador %c ganhou o jogo.\n\n\n", idJogador);
 }

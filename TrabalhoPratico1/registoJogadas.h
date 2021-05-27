@@ -13,7 +13,7 @@ struct Jogada{
     tabuleiro tab;
     //guarda o caractere que identifica o jogador
     char jogador;
-    //guarda o numero da jogada, linha e coluna afetada
+    //guarda o número da jogada, linha e coluna afetada
     int nJogada;
     int linhaAfetada;
     int colunaAfetada;

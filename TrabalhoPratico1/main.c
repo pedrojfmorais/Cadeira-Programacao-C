@@ -11,7 +11,7 @@
 int main()
 {
 
-    //variavel para guardar a opcao inserida pelo utilizador
+    //variável para guardar a opção inserida pelo utilizador
     int opcao;
 
     //chama a função initRandom() que permitirá utilizar a função de números random
