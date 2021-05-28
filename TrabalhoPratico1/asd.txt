@@ -1,14 +1,96 @@
 -------------------- Jogada 1 --------------------
-   1 2 3 4 5
-1 | | | | | |
-2 | | | | | |
-3 | | | | | |
-4 | | | | | |
-5 | | | | | |
+   1 2 3
+1 |G| | |
+2 | | | |
+3 | | | |
 
 Jogador A
 Jogada numero 1
+Linha 1, Coluna 1
+Peca Verde na linha 1, coluna 1 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 2 --------------------
+   1 2 3
+1 |Y| | |
+2 | | | |
+3 | | | |
+
+Jogador B
+Jogada numero 2
+Linha 1, Coluna 1
+Peca Amarela na linha 1, coluna 1 pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 3 --------------------
+   1 2 3
+1 |Y|G| |
+2 | | | |
+3 | | | |
+
+Jogador A
+Jogada numero 3
+Linha 1, Coluna 2
+Peca Verde na linha 1, coluna 2 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 4 --------------------
+   1 2 3
+1 |R|G| |
+2 | | | |
+3 | | | |
+
+Jogador B
+Jogada numero 4
+Linha 1, Coluna 1
+Peca Vermelha na linha 1, coluna 1 pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 5 --------------------
+   1 2 3
+1 |R|G|G|
+2 | | | |
+3 | | | |
+
+Jogador A
+Jogada numero 5
+Linha 1, Coluna 3
+Peca Verde na linha 1, coluna 3 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 6 --------------------
+   1 2 3
+1 |R|G|G|
+2 |G| | |
+3 | | | |
+
+Jogador B
+Jogada numero 6
+Linha 2, Coluna 1
+Peca Verde na linha 2, coluna 1 pelo jogador B.
+--------------------------------------------------
+
+-------------------- Jogada 7 --------------------
+   1 2 3
+1 |R|Y|G|
+2 |G| | |
+3 | | | |
+
+Jogador A
+Jogada numero 7
+Linha 1, Coluna 2
+Peca Amarela na linha 1, coluna 2 pelo jogador A.
+--------------------------------------------------
+
+-------------------- Jogada 8 --------------------
+   1 2 3
+1 |R|Y|G|
+2 |G| | |
+3 | | | |
+
+Jogador B
+Jogada numero 8
 Linha 0, Coluna 0
-O jogador A desistiu.
+O jogador B desistiu.
 --------------------------------------------------
 

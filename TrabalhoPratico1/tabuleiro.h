@@ -9,7 +9,7 @@ struct Tabuleiro {
     //guarda num array bidimensional dinâmico o estado do tabuleiro
     char **tabuleiro;
 
-    //guarda o numero de linha e de colunas do tabuleiro
+    //guarda o número de linhas e de colunas do tabuleiro
     int nLinhas;
     int nColunas;
 };
