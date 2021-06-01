@@ -486,7 +486,7 @@ void switchJogadorHumano(int numJogadas, jogadores *arrayJogadores, tabuleiro *t
                 printf("\nOcorreram ate agora %d jogadas.\n", numJogadas);
                 do{
                     //pede o número de jogadas que o utilizador pretende ver e verifica o número introduzido
-                    printf("Ver ultimas 'x' jogadas: ");
+                    printf("Ver ultimas 'k' jogadas: ");
                     scanf("%d", &nJogadasAnteriores);
                 }while(nJogadasAnteriores < 0 || nJogadasAnteriores > numJogadas);
 

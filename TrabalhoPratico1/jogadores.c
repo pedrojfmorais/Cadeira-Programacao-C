@@ -3,6 +3,9 @@
 
 #include "jogadores.h"
 
+#define PEDRA 1
+#define AUMENTOS_TABULEIRO 2
+
 //função que recebe a identificação de um jogador e o inicializa
 jogadores inicializarJogador(char identificacao)
 {
@@ -11,8 +14,8 @@ jogadores inicializarJogador(char identificacao)
 
     //guarda os dados do jogador na estrutura
     jogador.identificacao = identificacao;
-    jogador.pedra = 1;
-    jogador.aumentarTabuleiro = 2;
+    jogador.pedra = PEDRA;
+    jogador.aumentarTabuleiro = AUMENTOS_TABULEIRO;
 
     //e devolve a estrutura
     return jogador;
