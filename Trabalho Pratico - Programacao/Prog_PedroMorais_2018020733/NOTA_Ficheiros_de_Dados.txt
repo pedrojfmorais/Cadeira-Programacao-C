@@ -1,0 +1,3 @@
+O ficheiro "historico_jogo.txt" é a demonstração do resultado de um ficheiro com as diversas jogadas efetuadas no decorrer de um jogo.
+
+O ficheiro "jogo.bin" é um exemplo de um ficheiro binário criado ao interromper jogo, e que pode ser utilizado para retomar o estado do jogo.
